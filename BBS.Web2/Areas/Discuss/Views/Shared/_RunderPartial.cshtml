@@ -1,0 +1,15 @@
+﻿@model  BBS.Web2.Areas.Discuss.Models.PartialViewModel
+<h5 class="title-bg">热门讨论</h5>
+<ul class="popular-posts">
+    @{
+        int k=1;
+        foreach (var item in Model.TopLickDiscuss)
+        {
+            <li>              
+                <h4>@k.ToString() &nbsp;<a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss",id=item.Did })">@item.Title</a></h4>
+                <em>发起于： @item.AddTime.ToString("MM-dd HH:mm")</em>
+            </li>
+            k++;
+        }
+    }
+</ul>

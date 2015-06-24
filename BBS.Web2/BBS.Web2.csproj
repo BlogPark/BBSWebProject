@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E44077C-D283-4C23-8F42-AFD02C3DE4FD}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BBS.Web2</RootNamespace>
+    <AssemblyName>BBS.Web2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\BlogPark\BlogParkAreaRegistration.cs" />
+    <Compile Include="Areas\BlogPark\Controllers\BlogsController.cs" />
+    <Compile Include="Areas\BlogPark\Models\BlogIndexViewModel.cs" />
+    <Compile Include="Areas\Discuss\Controllers\DiscussPartController.cs" />
+    <Compile Include="Areas\Discuss\DiscussAreaRegistration.cs" />
+    <Compile Include="Areas\Discuss\Models\DiscuessIndexViewModel.cs" />
+    <Compile Include="Areas\Discuss\Models\DiscussDetailViewModel.cs" />
+    <Compile Include="Areas\Discuss\Models\PartialViewModel.cs" />
+    <Compile Include="Areas\Member\Controllers\MemberCenterController.cs" />
+    <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
+    <Compile Include="Areas\Member\Models\MembermsgViewModel.cs" />
+    <Compile Include="Areas\News\Controllers\NewsPartController.cs" />
+    <Compile Include="Areas\News\Models\CatePageViewModel.cs" />
+    <Compile Include="Areas\News\Models\NewsDetailViewModel.cs" />
+    <Compile Include="Areas\News\Models\NewsIndexViewModel.cs" />
+    <Compile Include="Areas\News\Models\ReightDataViewModel.cs" />
+    <Compile Include="Areas\News\NewsAreaRegistration.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HomePageViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebClass\ExpenClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\custom-styles.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\style-ie.css" />
+    <Content Include="Global.asax" />
+    <Content Include="img\apple-touch-icon-114x114.png" />
+    <Content Include="img\apple-touch-icon-72x72.png" />
+    <Content Include="img\apple-touch-icon.png" />
+    <Content Include="img\author-avatar.jpg" />
+    <Content Include="img\back-top-btn.png" />
+    <Content Include="img\bg_direction_nav.png" />
+    <Content Include="img\container-bg.png" />
+    <Content Include="img\default_user.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\gallery-item-hover.png" />
+    <Content Include="img\gallery-item-icons.png" />
+    <Content Include="img\gallery\48b2f9ba315ba879c1faf.jpg" />
+    <Content Include="img\gallery\48b2f9ba852e13fa0b7d3.jpg" />
+    <Content Include="img\gallery\48b2f9ba8978d6b9ca2dc.jpg" />
+    <Content Include="img\gallery\48b2f9bacfc87a0afbfc0.jpg" />
+    <Content Include="img\gallery\blog-med-img-1.jpg" />
+    <Content Include="img\gallery\client-img-1.png" />
+    <Content Include="img\gallery\client-img-2.png" />
+    <Content Include="img\gallery\client-img-3.png" />
+    <Content Include="img\gallery\client-img-4.png" />
+    <Content Include="img\gallery\client-img-5.png" />
+    <Content Include="img\gallery\flickr-img-1.jpg" />
+    <Content Include="img\gallery\gallery-img-1-3col.jpg" />
+    <Content Include="img\gallery\gallery-img-1-4col-cir.jpg" />
+    <Content Include="img\gallery\gallery-img-1-4col.jpg" />
+    <Content Include="img\gallery\gallery-img-1-6col.jpg" />
+    <Content Include="img\gallery\gallery-img-1-full.jpg" />
+    <Content Include="img\gallery\gallery-img-13-6col.jpg" />
+    <Content Include="img\gallery\gallery-img-14-6col.jpg" />
+    <Content Include="img\gallery\gallery-img-2-thumb.jpg" />
+    <Content Include="img\gallery\post-img-1.jpg" />
+    <Content Include="img\gallery\slider-img-1.jpg" />
+    <Content Include="img\gallery\thumbnail-270x130.jpg" />
+    <Content Include="img\gallery\thumbnail-270x300.jpg" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\location-map.jpg" />
+    <Content Include="img\page-bg-1.jpg" />
+    <Content Include="img\page-bg-11.jpg" />
+    <Content Include="img\piccolo-footer-logo.png" />
+    <Content Include="img\piccolo-logo.png" />
+    <Content Include="img\post-item-hover.png" />
+    <Content Include="img\prettyPhoto\default\default_thumb.png" />
+    <Content Include="img\prettyPhoto\default\loader.gif" />
+    <Content Include="img\prettyPhoto\default\sprite.png" />
+    <Content Include="img\prettyPhoto\default\sprite_next.png" />
+    <Content Include="img\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="img\prettyPhoto\default\sprite_x.png" />
+    <Content Include="img\prettyPhoto\default\sprite_y.png" />
+    <Content Include="img\rnd-client-mask.png" />
+    <Content Include="img\slider-caption-bg.png" />
+    <Content Include="img\social-icons.png" />
+    <Content Include="img\user-avatar.jpg" />
+    <Content Include="img\user-avatar1.jpg" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\jquery.custom.js" />
+    <Content Include="js\jquery.easing.1.3.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\jquery.quicksand.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\BlogPark\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\News\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_DefaultLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\News\Views\Shared\_LayoutNews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\News\Views\NewsPart\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\News\Views\NewsPart\GetListByCateid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\News\Views\NewsPart\NewsDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\BlogPark\Views\Shared\_LayoutBlog.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\BlogPark\Views\Blogs\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BBS.BLL\BBS.BLL.csproj">
+      <Project>{0448231e-7116-4153-8475-16273963214c}</Project>
+      <Name>BBS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BBS.Comment\BBS.Comment.csproj">
+      <Project>{16670e06-6360-4e6e-ac31-a04e8ef5886c}</Project>
+      <Name>BBS.Comment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BBS.Model\BBS.Model.csproj">
+      <Project>{67c4c693-f393-491f-bbb4-d7a117aacb04}</Project>
+      <Name>BBS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\News\Views\Shared\_ReightPartView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Discuss\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Discuss\Views\Shared\_LayoutDiscuss.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Discuss\Views\DiscussPart\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Discuss\Views\Shared\_RunderPartial.cshtml" />
+    <Content Include="Areas\Discuss\Views\DiscussPart\DiscuessDetail.cshtml" />
+    <Content Include="Areas\Member\Views\Web.config" />
+    <Content Include="Areas\Member\Views\Shared\_LayoutMember.cshtml" />
+    <Content Include="Areas\Member\Views\MemberCenter\Index.cshtml" />
+    <Content Include="Areas\Member\Views\Shared\_memleftpartial.cshtml" />
+    <None Include="Properties\PublishProfiles\web2.pubxml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Content.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55151</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55151/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

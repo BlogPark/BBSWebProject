@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "~/Areas/News/Views/Shared/_LayoutNews.cshtml";
+}
+@model BBS.Web2.Areas.News.Models.NewsIndexViewModel
+<div class="row">
+    <!--Container row-->
+    <!-- Title Header -->
+    <div class="span8">
+        <!--Begin page content column-->
+        <h3 class="title-bg">技术新闻<lable style="float: right; text-transform: lowercase; font-size: 15px;"><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 2 }).Replace("_1.html", ".html")">更多>></a></lable></h3>
+        <div class="row clearfix">
+            <ul class="blog-post-grid">
+                @{
+                    foreach (var item in Model.DevelopNewslist)
+                    {
+                        <li class="span2 blog-post-item">
+                            <div class="blog-post-hover hidden-phone hidden-tablet">
+                                <p>
+                                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" class="clearfix" target="_blank"><b>@item.TitleName</b></a>
+                                    @item.PublishTime<br />
+                                    @item.DSummary.Substring(0, 30)
+                                </p>
+                            </div>
+                            <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                                <img src="@item.MainPicURL" alt="@item.TitleName" style="width:170px;height:140px">
+                            </a>
+                            @*<p style="font-size: 14px;"><b>@item.TitleName</b></p>*@
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <h3 class="title-bg">互联网新闻<lable style="float: right; text-transform: lowercase; font-size: 15px;"><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News",  cid = 1 }).Replace("_1.html", ".html")">更多>></a></lable></h3>
+        <div class="row clearfix">
+            <ul class="blog-post-grid">
+                <!-- Blog Post 1 -->
+                @{
+                    foreach (var item in Model.InternetNewslist)
+                    {
+                        <li class="span2 blog-post-item">
+                            <div class="blog-post-hover hidden-phone hidden-tablet">
+                                <p>
+                                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" class="clearfix" target="_blank"><b>@item.TitleName</b></a>
+                                    @item.PublishTime<br />
+                                    @item.DSummary.Substring(0, 30)
+                                </p>
+                            </div>
+                            <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                                <img src="@item.MainPicURL" alt="@item.TitleName" style="width:170px;height:140px">
+                            </a>
+                            @*<p style="font-size: 14px;"><b>@item.TitleName</b></p>*@
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <h3 class="title-bg">国内新闻<lable style="float: right; text-transform: lowercase; font-size: 15px;"><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News",  cid = 3 }).Replace("_1.html", ".html")">更多>></a></lable></h3>
+        <div class="row clearfix">
+            <ul class="blog-post-grid">
+                <!-- Blog Post 1 -->
+                @{
+                    foreach (var item in Model.DomesticNewslist)
+                    {
+                        <li class="span2 blog-post-item">
+                            <div class="blog-post-hover hidden-phone hidden-tablet">
+                                <p>
+                                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" class="clearfix" target="_blank"><b>@item.TitleName</b></a>
+                                    @item.PublishTime<br />
+                                    @item.DSummary.Substring(0, 30)
+                                </p>
+                            </div>
+                            <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                                <img src="@item.MainPicURL" alt="@item.TitleName" style="width:170px;height:140px">
+                            </a>
+                            @*<p style="font-size: 14px;"><b>@item.TitleName</b></p>*@
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <h3 class="title-bg">国际新闻<lable style="float: right; text-transform: lowercase; font-size: 15px;"><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 4 }).Replace("_1.html",".html")">更多>></a></lable></h3>
+        <div class="row clearfix">
+            <ul class="blog-post-grid">
+                <!-- Blog Post 1 -->
+                @{
+                    foreach (var item in Model.WorldNewslist)
+                    {
+                        <li class="span2 blog-post-item">
+                            <div class="blog-post-hover hidden-phone hidden-tablet">
+                                <p>
+                                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" class="clearfix" target="_blank"><b>@item.TitleName</b></a>
+                                    @item.PublishTime<br />
+                                    @item.DSummary.Substring(0, 30)
+                                </p>
+                            </div>
+                            <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                                <img src="@item.MainPicURL" alt="@item.TitleName" style="width:170px;height:140px">
+                            </a>
+                            @*<p style="font-size: 14px;"><b>@item.TitleName</b></p>*@
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    @Html.Action("ReightPart", "NewsPart", new { area = "News" });
+</div>

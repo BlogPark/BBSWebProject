@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/imgart/kaifanews.ico" type="image/ico" rel="shortcut icon">
+    <meta name="author" content="开发新闻网">
+    <meta name="baidu_union_verify" content="a67a72d12896233163b11b4f684ad4bb">
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.KeyWord">
+    <meta name="description" content="@ViewBag.Description">
+    <link href="@Url.Content("/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/adminia.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/adminia-responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/pages/dashboard.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/font-awesome.css")" rel="stylesheet" />
+    <script src="@Url.Content("/js/jquery-1.7.2.min.js")"></script>
+    <script src="@Url.Content("/js/bootstrap.js")"></script>
+    @RenderSection("headcss", false)
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+    <div class="navbar navbar-fixed-top">
+
+        <div class="navbar-inner">
+
+            <div class="container">
+
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <a class="brand" href="/Home">了解程序猿世界</a>
+                @Html.Partial("_TopUserPartial")
+            </div> <!-- /container -->
+
+        </div> <!-- /navbar-inner -->
+
+    </div> <!-- /navbar -->
+    <div id="content">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="span3" id="myScrollspy">
+
+                    <div class="account-container">
+
+                        @*<div class="account-avatar">
+                                <img src="./img/headshot.png" alt="" class="thumbnail" />
+                            </div>*@ <!-- /account-avatar -->
+
+                        <div class="account-details">
+
+                            <span class="account-name">开发新闻</span>
+
+                            <span class="account-role">搜集最新编程信息</span>
+
+                            @*<span class="account-actions">
+                                    <a href="javascript:;">Profile</a> |
+
+                                    <a href="javascript:;">Edit Settings</a>
+                                </span>*@
+
+                        </div> <!-- /account-details -->
+
+                    </div> <!-- /account-container -->
+                    <hr />
+                    <ul id="main-nav" class="nav nav-tabs nav-stacked">
+
+                        <li class="active">
+                            <a href="/Home/Index">
+                                <i class="icon-home"></i>
+                                网站首页
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/CategoryPage?cateid=2">
+                                <i class="icon-pushpin"></i>
+                                软件开发
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/CategoryPage?cateid=3">
+                                <i class="icon-th-list"></i>
+                                互联网新态
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/CategoryPage?cateid=4">
+                                <i class="icon-th-large"></i>
+                                游  戏
+                                @*<span class="label label-warning pull-right">5</span>*@
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/CategoryPage?cateid=5">
+                                <i class="icon-signal"></i>
+                                程序人生
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/CategoryPage?cateid=6">
+                                <i class="icon-user"></i>
+                                在线互动
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/CategoryPage?cateid=7">
+                                <i class="icon-lock"></i>
+                                综合分类
+                            </a>
+                        </li>
+
+                    </ul>
+                    <hr />
+
+                    <div class="sidebar-extra">
+                        <p>asda事半功倍的好地方是很好很好过年回家发个邮件风格豆腐干豆腐干地方恢复鬼画符工会银行地方士大夫士大夫石帆胜丰额那几句话光伏发电</p>
+                    </div> <!-- .sidebar-extra -->
+                    <br />
+                </div> <!-- /span3 -->
+                <div class="span6">
+                    @RenderBody()
+                </div> <!-- /span9 -->
+                <div class="span3">
+                    @Html.Action("Index", "Rightside")
+                </div> <!-- /span3 -->
+
+            </div> <!-- /row -->
+
+        </div> <!-- /container -->
+
+    </div> <!-- /content -->
+
+
+    <div id="footer">
+
+        <div class="container">
+            <hr />
+            <p>&copy; 网站备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank" title="京ICP备15023538号">京ICP备15023538号</a> - 保留所有权利 <a href="http://www.kaifanews.com" title="关于我们" target="_blank">关于我们</a></p>
+        </div> <!-- /container -->
+
+    </div> <!-- /footer -->
+    <script src="@Url.Content("/js/excanvas.min.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.pie.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.orderBars.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.resize.js")"></script>
+    <script src="@Url.Content("/js/kaifanewsjs.js")"></script>
+    @RenderSection("bodyjs", false)
+</body>
+</html>

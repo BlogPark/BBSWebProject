@@ -1,0 +1,50 @@
+﻿@using BBS.Web.Models;
+@model HomeIndexViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section headcss{
+    <link href="@Url.Content("/css/pages/faq.css")" rel="stylesheet" />
+}
+<div class="widget">
+    <div class="widget-content">
+        <div class="faq-toc">
+            <ol>
+                @{
+                    for (int i = 0; i < Model.RecommendArticlelist.Count; i++)
+                    {
+                        string link = "/Article/Index?id=" + Model.RecommendArticlelist[i].AID.ToString();
+                        <li>@(i + 1). <a href="@link">@Model.RecommendArticlelist[i].TitleName</a><span class="label  pull-right">@Model.RecommendArticlelist[i].ClickCount.ToString()</span></li>
+                    }
+                }
+            </ol>
+        </div>
+        <ol class="faq-list">
+            @{
+                foreach (BBS.Model.ArticleInfo item in Model.ArticleInfolist)
+                {
+                    string str = item.AuthorName + " 发表于 " + item.PublishTime.ToString("yyyy-MM-dd HH:mm");
+                    string link = "/Article/Index?id=" + item.AID.ToString();
+                    string picurl = item.MainPicURL;
+                    <li>
+                        <a href="@link" target="_blank"><h4>@item.TitleName</h4></a>
+                        <lable style="color: #999">@Html.Raw(str)</lable>
+                        <img src="@picurl" alt="@item.TitleName" style="float:right;width:100px;height:100px" />
+                        <p>@item.DSummary.ToString()</p>
+                    </li>
+                    <hr />
+                }
+            }
+            <li>
+                <div id="morearticle" style="vertical-align:middle;height:35px;width:100%;background-color:#eee;text-align:center">
+                    <a href="#">more</a>
+                </div>
+            </li>
+        </ol>
+
+    </div> <!-- /widget-content -->
+
+</div> <!-- /widget -->
+@section bodyjs{
+    <script src="@Url.Content("/js/faq.js")"></script>
+}

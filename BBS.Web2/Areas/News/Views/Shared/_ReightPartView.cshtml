@@ -1,0 +1,70 @@
+﻿@model BBS.Web2.Areas.News.Models.ReightDataViewModel
+<div class="span4 sidebar page-sidebar">
+    <!-- Begin sidebar column -->
+    <!--Tabbed Content-->
+    <h5 class="title-bg">阅读排行</h5>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#comments" data-toggle="tab">日排行</a></li>
+        <li><a href="#tweets" data-toggle="tab">周排行</a></li>
+        <li><a href="#about" data-toggle="tab">月排行</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="comments">
+            <ul>
+                @{
+                    foreach (var item in Model.threedayData)
+                    {
+                        <li><i class="icon-comment"></i><a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a></li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="tab-pane" id="tweets">
+            <ul>
+                @{
+                    foreach (var item in Model.sevendayData)
+                    {
+                        <li><i class="icon-comment"></i><a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a></li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="tab-pane" id="about">
+            <ul>
+                @{
+                    foreach (var item in Model.thirtydayData)
+                    {
+                        <li><i class="icon-comment"></i><a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!--Testimonials-->
+    <h5 class="title-bg">最新评论</h5>
+    @{
+        foreach (var item in Model.Newcomment)
+        {
+            <p class="quote-text side">"@item.CoContent"<cite>From <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a></cite></p>
+        }
+    }
+
+    <!--Latest News-->
+    <h5 class="title-bg">最新发布</h5>
+    <ul class="popular-posts">
+        @{
+            foreach (var item in Model.Lastpublish)
+            {
+                <li>
+                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                        <img src="@item.MainPicURL" alt="@item.TitleName" style="width:70px;height:70px">
+                    </a>
+                    <h6><a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a></h6>
+                    <em>Posted on @item.PublishTime.ToString("yyyy-MM-dd HH:mm:ss")</em>
+                </li>
+            }
+        }
+    </ul>
+</div>

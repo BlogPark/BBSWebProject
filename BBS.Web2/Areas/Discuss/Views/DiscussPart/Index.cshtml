@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Areas/Discuss/Views/Shared/_LayoutDiscuss.cshtml";
+}
+
+@model  BBS.Web2.Areas.Discuss.Models.DiscuessIndexViewModel
+
+<div class="row">
+    <!--Container row-->
+    <!-- Page Sidebar
+    ================================================== -->
+    <div class="span3 sidebar page-sidebar">
+       @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" });
+    </div><!-- End sidebar column -->
+    <!-- Page Content
+    ================================================== -->
+    <div class="span9">
+        <h2>热门话题</h2>
+        @{
+            int k = 1;
+            foreach (var item in Model.toplist)
+            {
+                <h5 class="title-bg">
+                    @k.ToString() &nbsp;&nbsp;&nbsp; <a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss",id=item.Did })" style="color:black;font-size:16px;">@item.Title</a>
+                    <small>>></small>
+                    <button class="btn btn-mini btn-inverse hidden-phone" type="button" style="background-color:none"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></button>
+                </h5>
+                k++;
+            }
+            foreach (var item in Model.dislist)
+            {
+                <h5 class="title-bg">
+                    @k.ToString() &nbsp;&nbsp;&nbsp; <a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss",id=item.Did })" style="color:black;font-size:16px;">@item.Title</a>
+                    <small>>></small>
+                    <button class="btn btn-mini btn-inverse hidden-phone" type="button" style="background-color:none"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></button>
+                    <label class="bgtpanel"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></label>
+                </h5>
+                k++;
+            }
+        }
+        <!-- Pagination -->
+        @Html.MyPage(Model.PageCurrent,Model.PageSize,Model.TotalCount)
+    </div> <!--End page content column-->
+</div><!-- End container row -->

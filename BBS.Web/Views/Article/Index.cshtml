@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model BBS.Web.Models.ArticleDetailViewModel
+<div id="news_main">
+    <div id="news_title"><h2 style="text-align: center;">@Model.TitleName</h2></div>
+    <div id="news_info">
+        <span class="news_poster">投递人 @Model.AuthorName</span>
+        &nbsp;&nbsp;<span class="time">发布于 @Model.PublishTime.ToString("yyyy-MM-dd HH:mm")</span>
+        &nbsp;&nbsp;<span class="comment">评论(6)</span>
+        &nbsp;&nbsp;<span id="News_TotalView" class="view">@Html.Raw(Model.ClickCount)人阅读</span>
+        &nbsp;		<a href="@Model.SourceUrl" target="_blank" class="wz" id="link_source1">原文链接</a>&nbsp;	<a class="wz" onclick="PutInWz();return false;" href="#">[收藏]</a>
+    </div><!--end: news_info -->
+    <br />
+    <br />
+    <div id="news_content">
+        <div id="news_body">
+            @Html.Raw(Model.ACountent)
+    </div><!--end: news_body -->
+    <div id="news_otherinfo">
+        <div id="come_from">
+            来自:  <a href="http://news.cnblogs.com" target="_blank" id="link_source2">51CTO</a>
+        </div><!--end: come_from -->
+    </div><!--end: news_otherinfo -->
+</div><!--end: news_content 新闻的主体 -->
+<!--end: comment_main -->
+</div>

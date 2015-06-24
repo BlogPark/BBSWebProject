@@ -1,0 +1,58 @@
+﻿@model BBS.Web2.Areas.BlogPark.Models.BlogIndexViewModel
+@{
+    Layout = "~/Areas/BlogPark/Views/Shared/_LayoutBlog.cshtml";
+}
+
+<!-- Page Content
+    ================================================== -->
+<div class="row">
+
+    <!-- Gallery Items
+        ================================================== -->
+    <div class="span12 gallery">
+
+        <h3 class="title-bg" style="padding-bottom: 12px;">
+            博客天地
+        </h3>
+
+        <div class="row clearfix">
+            <ul class="gallery-post-grid holder">
+                @{
+                    int k = 1;
+                    foreach (var item in Model.BlogMembers)
+                    {
+                        string str = "id-" + k.ToString();
+                        <li class="span3 gallery-item" data-id="@str" data-type="illustration">
+                            <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="#" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="#">
+                                <img src="/img/gallery/gallery-img-1-4col.jpg" alt="Gallery" >
+                            </a>
+                            <span class="project-details" style="width:250px;height:61px"><a href="#">@item.BlogUserName</a>@item.BlogDecription</span>
+                        </li>
+                        k++;
+                    }
+                }    
+            </ul>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" style="text-align: center">
+            <ul>
+                <li class="active"><a href="#">Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- End gallery list-->
+</div>
+<!-- End container row -->

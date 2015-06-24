@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Areas/News/Views/Shared/_LayoutNews.cshtml";
+}
+@model BBS.Web2.Areas.News.Models.CatePageViewModel
+<!-- Blog Content -->
+<div class="row">
+    <!-- Blog Posts-->
+    <div class="span8 blog">
+        @{
+            foreach (var item in Model.News)
+            {
+                <!-- Blog Post 1 -->
+                <article class="clearfix">
+                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                        <img src="@item.MainPicURL" alt="@item.TitleName" class="align-left" style="width:270px;height:220px">
+                    </a>
+                    <h4 class="title-bg"><a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a></h4>
+                    <p>@item.DSummary.Substring(0,100)</p>
+                    <button class="btn btn-mini btn-inverse" type="button" onclick="window.open('@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})', '_blank'); ">Read more</button>
+                    <div class="post-summary-footer">
+                        <ul class="post-data-3">
+                            <li><i class="icon-calendar"></i>@item.PublishTime.ToString("yyyy-MM-dd HH:mm:ss")</li>
+                            <li><i class="icon-user"></i><a href="#">@item.AuthorName</a></li>
+                            <li><i class="icon-comment"></i><a href="#">@item.ClickCount person browsed</a></li>
+                            <li><i class="icon-tags"></i>@item.Tags</li>
+                        </ul>
+                    </div>
+                </article>
+            }
+        }
+        <!-- Pagination -->
+       @Html.MyPage(Model.PageCurrent, Model.PageSize, Model.TotalCount)
+    </div>
+
+    <!-- Blog Sidebar-->
+    @Html.Action("ReightPart", "NewsPart", new { area = "News" });
+</div>

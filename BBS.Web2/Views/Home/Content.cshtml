@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Content";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<div class="row">
+    <!--Container row-->
+    <div class="span8 contact">
+        <!--Begin page content column-->
+        <h2>留言给我</h2>
+        <p>欢迎大家留言给我，帮助我把这个网站变得更好，更贴合大家的需求，对此我在此表示无尽的谢意</p>
+        <div class="alert alert-success">
+            感谢您的建议，我将尽快查看并且积极听取您的指导建议
+        </div>
+        <form action="#" id="contact-form">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input class="span4" id="prependedInput" size="16" type="text" placeholder="你的名字">
+            </div>
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input class="span4" id="prependedInput" size="16" type="text" placeholder="你的邮箱">
+            </div>
+            <textarea class="span6"></textarea>
+            <div class="row">
+                <div class="span2">
+                    <input type="submit" class="btn btn-inverse" value="提 交 留 言">
+                </div>
+            </div>
+        </form>
+    </div> <!--End page content column-->
+    <!-- Sidebar
+    ================================================== -->
+    <div class="span4 sidebar page-sidebar">
+        <!-- Begin sidebar column -->
+        <h5 class="title-bg">Our Location</h5>
+        <address>
+            <strong>Piccolo</strong><br>
+            123 Main St, Suite 600<br>
+            San Francisco, CA 94107<br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+        </address>
+
+        <address>
+            <strong>Jimmy Doe</strong><br>
+            <a href="mailto:#">first.last@gmail.com</a>
+        </address>
+        <h5 class="title-bg">Map Us</h5>
+        <img src="img/location-map.jpg" alt="map">
+    </div><!-- End sidebar column -->
+</div><!-- End container row -->

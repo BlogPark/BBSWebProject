@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Areas/Member/Views/Shared/_LayoutMember.cshtml";
+}
+<div class="row">
+    <!--Container row-->
+    <!-- Page Sidebar
+    ================================================== -->
+    <div class="span3 sidebar page-left-sidebar">
+        @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" });
+    </div><!-- End sidebar column -->
+    <!-- Page Content
+    ================================================== -->
+    <div class="span9">
+        
+    </div> <!--End page content column-->
+</div><!-- End container row -->

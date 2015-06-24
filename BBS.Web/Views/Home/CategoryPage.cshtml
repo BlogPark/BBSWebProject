@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model BBS.Web.Models.CategoryViewModel
+@section headcss{
+    <link href="@Url.Content("/css/pages/faq.css")" rel="stylesheet" />
+}
+<h1 class="page-title">
+    <i class="@Model.iconname"></i>
+    @Model.CategoryName
+</h1>
+<input type="hidden" value="@Model.CategoryID" id="cateid" />
+
+<ol class="faq-list">
+
+    @{
+        foreach (var item in Model.Articles)
+        {
+            string str = item.AuthorName + " 发表于 " + item.PublishTime.ToString("yyyy-MM-dd HH:mm");
+            string link = "/Article/Index?id=" + item.AID.ToString();
+            string picurl = "/imgart" + item.MainPicURL;
+            <li>
+                <a href="@link" target="_blank"><h4>@item.TitleName</h4></a>
+                <lable style="color: #999">@Html.Raw(str)</lable>
+                <img src="@picurl" alt="@item.TitleName" style="float:right;width:100px;height:100px" />
+                <p>@item.DSummary.ToString()</p>
+            </li>
+            <hr />
+        }
+    }
+</ol>
+

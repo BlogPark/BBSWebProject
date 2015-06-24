@@ -1,0 +1,196 @@
+﻿@{
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+@model BBS.Web2.Models.HomePageViewModel
+<div class="row headline">
+    <!-- Begin Headline -->
+    <!-- Slider Carouse -->
+    <div class="span8">
+        <div class="flexslider">
+            <ul class="slides">
+                <li style="width: 770px; height:360px;float: left; display: block;">
+                    <a href="gallery-single.htm">
+                        <img src="@Url.Content("/img/gallery/48b2f9ba315ba879c1faf.jpg")" a alt="slider" />
+                    </a>
+                </li>
+                <li style="width: 770px; height:360px; float: left; display: block;">
+                    <a href="gallery-single.htm">
+                        <img src="@Url.Content("/img/gallery/48b2f9ba852e13fa0b7d3.jpg")" alt="slider" />
+                    </a>
+                </li>
+                <li style="width: 770px; height:360px; float: left; display: block;">
+                    <a href="gallery-single.htm">
+                        <img src="@Url.Content("/img/gallery/48b2f9ba8978d6b9ca2dc.jpg")" alt="slider" />
+                    </a>
+                </li>
+                <li style="width: 770px;  height:360px;float: left; display: block;">
+                    <a href="gallery-single.htm">
+                        <img src="@Url.Content("/img/gallery/48b2f9bacfc87a0afbfc0.jpg")" alt="slider" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Headline Text-->
+    <div class="span4">
+        <h3>
+            欢    迎.
+            <br />
+            开发者的新闻天堂
+        </h3>
+        <p class="lead">了解互联网、IT业界，乃至整个国家和世界的新闻</p>
+        <p>撰写自己的博客文章，参与大家的时尚热门话题讨论</p>
+        <a href="#"><i class="icon-plus-sign"></i>Read More</a>
+    </div>
+</div>
+<!-- End Headline -->
+<div class="row gallery-row">
+    <!-- Begin Gallery Row -->
+
+    <div class="span12">
+        <h5 class="title-bg">
+            了解世界
+            <small>开启新闻的旅程</small>
+            <button class="btn btn-mini btn-inverse hidden-phone" type="button" onclick="window.open('@Url.Action("Index", "NewsPart", new { area="News"})', '_blank');">更多>></button>
+        </h5>
+
+        <!-- Gallery Thumbnails-->
+
+        <div class="row clearfix no-margin">
+            <ul class="gallery-post-grid holder">
+                @{
+                    foreach (var item in Model.News)
+                    {
+                        byte[] bytestr = System.Text.Encoding.Unicode.GetBytes(item.TitleName);
+                         <!-- Gallery Item 1 -->
+                        <li class="span3 gallery-item" data-id="id-1" data-type="illustration">
+                            <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="@item.MainPicURL" class="item-zoom-link lightbox" title="@item.TitleName" data-rel="prettyPhoto"></a>
+                                    <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" class="item-details-link" target="_blank"></a>
+                                </span>
+                            </span>
+                            <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">
+                                <img src="@item.MainPicURL" alt="@item.TitleName" style="width:270px;height:220px" class="img-responsive">
+                            </a>
+                            <span class="project-details" style="width:250px;height:81px">
+                                <a href="@Url.Action("NewsDetail", "NewsPart", new { area="News",id=item.AID})" target="_blank">@item.TitleName</a>@{if (bytestr.Length < 44)
+                                { <br />}
+                                }@item.DSummary.Substring(0, 12)
+                            </span>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!-- End Gallery Row -->
+<div class="row">
+    <!-- Begin Bottom Section -->
+    <!-- Blog Preview -->
+    <div class="span6">
+        <h5 class="title-bg">
+            优秀博主
+            <small>勤劳优秀的小蜜蜂</small>
+            <button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
+            <button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
+        </h5>
+
+        <div id="blogCarousel" class="carousel slide ">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+                @{
+                    foreach (var item in Model.MemberStar)
+                    {
+                        string sexname = item.Sex.ToString() == "1" ? "先生" : "美女";
+                        <!-- Blog Item 1 -->
+                        <div class="active item">
+                            <a href="blog-single.htm">
+                                <img src="@Url.Content("~/img/default_user.png")" alt="" class="align-left blog-thumb-preview img-responsive" style="width:270px;height:220px" />
+                            </a>
+                            <div class="post-info clearfix">
+                                <h4><a href="blog-single.htm">@item.Name</a></h4>
+                                <ul class="blog-details-preview">
+                                    <li>
+                                        <i class="icon-calendar"></i><strong>入住时间:</strong>
+                                        @item.Addtime.ToString("yyyy-MM-dd")
+                                    <li>
+                                    <li><i class="icon-user"></i><strong>性别:</strong> <a href="#" title="Link">@sexname</a>
+                                    <li>
+                                    <li><i class="icon-comment"></i><strong>喜好:</strong> <a href="#" title="Link">@item.Likes</a>
+                                    <li>
+                                    <li><i class="icon-tags"></i>@item.Tags
+                                    <li><i class="icon-th-large"></i>@Html.Raw(item.Description)
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Area
+        ================================================== -->
+    <div class="span6">
+
+        <h5 class="title-bg">
+            热门讨论
+            <small>热门的话题，激烈的讨论</small>
+            <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
+            <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
+        </h5>
+
+        <!-- Client Testimonial Slider-->
+        <div id="clientCarousel" class="carousel slide no-margin">
+            <!-- Carousel items -->
+            <div class="carousel-inner">
+
+                <div class="active item">
+                    <p class="quote-text"><a href="#">这个网站怎么样？</a><cite>-如题</cite></p>
+                </div>
+
+                <div class="item">
+                    <p class="quote-text">"Adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie molestie."<cite>- Another Client Name, Company Name</cite></p>
+                </div>
+
+                <div class="item">
+                    <p class="quote-text">"Mauris eget tellus sem. Cras sollicitudin sem eu elit aliquam quis condimentum nulla suscipit. Nam sed magna ante. Ut eget suscipit mauris."<cite>- On More Client, The Company</cite></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Client Logo Thumbs-->
+        <ul class="client-logos">
+            <li>
+                <a href="#" class="client-link">
+                    <img src="img/gallery/client-img-1.png" alt="Client">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="client-link">
+                    <img src="img/gallery/client-img-2.png" alt="Client">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="client-link">
+                    <img src="img/gallery/client-img-3.png" alt="Client" style="width:100px;height:100px" class="img-responsive">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="client-link">
+                    <img src="img/gallery/client-img-4.png" alt="Client">
+                </a>
+            </li>
+            <li>
+                <a href="#" class="client-link">
+                    <img src="img/gallery/client-img-5.png" alt="Client">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- End Bottom Section -->

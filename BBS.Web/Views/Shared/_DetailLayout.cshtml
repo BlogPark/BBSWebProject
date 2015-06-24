@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="开发新闻网">
+    <meta name="baidu_union_verify" content="a67a72d12896233163b11b4f684ad4bb">
+    <title>@ViewBag.Title</title>
+    <meta name="keywords" content="@ViewBag.KeyWord">
+    <meta name="description" content="@ViewBag.Description">
+    <link href="@Url.Content("/css/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/bootstrap-responsive.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/adminia.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/adminia-responsive.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/pages/dashboard.css")" rel="stylesheet" />
+    <link href="@Url.Content("/css/font-awesome.css")" rel="stylesheet" />
+    @RenderSection("headcss", false)
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+
+        <div class="navbar-inner">
+
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/Home">了解程序猿世界</a>
+                @Html.Partial("_TopUserPartial")
+            </div> <!-- /container -->
+        </div> <!-- /navbar-inner -->
+    </div> <!-- /navbar -->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="span9">
+                    @RenderBody()
+                </div> <!-- /span9 -->
+                <div class="span3">
+                    @Html.Partial("_RightAdvPartial")
+                </div> <!-- /span3 -->
+            </div> <!-- /row -->
+        </div> <!-- /container -->
+    </div> <!-- /content -->
+    <div id="footer">
+        <div class="container">
+            <hr />
+            <p>&copy; 网站备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank" title="京ICP备15023538号">京ICP备15023538号</a> - 保留所有权利 <a href="http://www.kaifanews.com" title="关于我们" target="_blank">关于我们</a></p>
+        </div> <!-- /container -->
+    </div> <!-- /footer -->
+    <script src="@Url.Content("/js/jquery-1.7.2.min.js")"></script>
+    <script src="@Url.Content("/js/excanvas.min.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.pie.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.orderBars.js")"></script>
+    <script src="@Url.Content("/js/jquery.flot.resize.js")"></script>
+    <script src="@Url.Content("/js/bootstrap.js")"></script>
+    <script src="@Url.Content("/js/kaifanewsjs.js")"></script>
+    @RenderSection("bodyjs", false)
+</body>
+</html>

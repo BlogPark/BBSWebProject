@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "~/Areas/News/Views/Shared/_LayoutNews.cshtml";
+}
+@model BBS.Web2.Areas.News.Models.NewsDetailViewModel
+<!-- Blog Content -->
+<div class="row">
+    <!--Container row-->
+    <!-- Blog Full Post -->
+    <div class="span8 blog">
+        <!-- Blog Post 1 -->
+        <article>
+            <h3 class="title-bg">@Model.TitleName</h3>
+            <div class="post-content">
+
+                <img src="@Model.MainPic" alt="@Model.TitleName" style="width:100%">
+
+                <div class="post-body">
+                    @Html.Raw(Model.NewsContent)
+                </div>
+
+                <div class="post-summary-footer">
+                    <ul class="post-data">
+                        <li><i class="icon-calendar"></i>@Model.PublishTime</li>
+                        <li><i class="icon-user"></i><a href="#">@Model.Author</a></li>
+                        <li><i class="icon-comment"></i><a href="#">@Model.Comments.Count  Comments</a></li>
+                        <li>
+                            <i class="icon-tags"></i>
+                            @{
+                                foreach (var item in Model.tags)
+                                {
+                                    <a href="#">@item</a>@Html.Raw(",")
+                                }
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+        <!-- Post Comments -->
+        <section class="comments">
+            <h4 class="title-bg"><a name="comments"></a>@Model.Comments.Count Comments so far</h4>
+            <ul>
+                @{
+                    foreach (var item in Model.Comments)
+                    {
+                        <li>
+                            <img src="/img/user-avatar.jpg" alt="Image" />
+                            <span class="comment-name">@item.MemberUserName</span>
+                            <span class="comment-date">@item.Addtime.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                            <div class="comment-content">@Html.Raw(item.CoContent)</div>
+                        </li>
+                    }
+                }
+            </ul>
+
+            <!-- Comment Form -->
+            <div class="comment-form-container">
+                <h6>Leave a Comment</h6>
+                <form action="#" id="comment-form">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-user"></i></span>
+                        <input class="span4" id="prependedInput" size="16" type="text" placeholder="姓 名">
+                    </div>
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-envelope"></i></span>
+                        <input class="span4" id="prependedInput" size="16" type="text" placeholder="邮 箱">
+                    </div>
+                    <textarea class="span6"></textarea>
+                    <div class="row">
+                        <div class="span2">
+                            <input type="submit" class="btn btn-inverse" value="提交评论">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Close comments section-->
+    </div>
+    <!--Close container row-->
+    <!-- Blog Sidebar -->
+    @Html.Action("ReightPart", "NewsPart", new { area = "News" });
+</div>

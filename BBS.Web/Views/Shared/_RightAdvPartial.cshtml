@@ -1,0 +1,112 @@
+﻿@model BBS.Web.Models.ReightParticalViewModel
+<div class="widget widget_text" style="top: 0px;width:300px;height:300px;background-image:url('/imgart/syspic/square-image.png')">
+    @{
+        if (Model.AdvList != null)
+        {
+            foreach (var item in Model.AdvList)
+            {
+                if (item.AdvPID == 1)
+                {
+                    string pcon = item.AdvCode;
+                    string content = pcon.Replace("@content", item.ContentCode);
+                    @Html.Raw(content);
+                }
+            }
+        }
+    }
+</div>
+<div class="widget widget_text" style="top: 0px;width:300px;height:300px;background-image:url('/imgart/syspic/square-image.png')">
+    @{
+        if (Model.AdvList != null)
+        {
+            foreach (var item in Model.AdvList)
+            {
+                if (item.AdvPID == 2)
+                {
+                    string pcon = item.AdvCode;
+                    string content = pcon.Replace("@content", item.ContentCode);
+                    @Html.Raw(content);
+                }
+            }
+        }
+    }
+</div>
+<div class="widget widget_text" style="top: 0px;width:300px;height:300px;background-image:url('/imgart/syspic/square-image.png')">
+    @{
+        if (Model.AdvList != null)
+        {
+            foreach (var item in Model.AdvList)
+            {
+                if (item.AdvPID == 3)
+                {
+                    string pcon = item.AdvCode;
+                    string content = pcon.Replace("@content", item.ContentCode);
+                    @Html.Raw(content);
+                }
+            }
+        }
+    }
+</div>
+<div class="widget widget_text" style="top: 0px;">
+    <div style="width:100%;border-bottom: 2px solid #eee;"><strong style="font-size: 20px; line-height: 32px; font-family: inherit; bottom: -20px;">最新评论</strong></div>
+    <ol>
+        @{
+            foreach (var item in Model.NewComment)
+            {
+                <li style="line-height:30px"><a href="@Url.Action("Index", "Article", new { id = @item.AID })">@item.TitleName</a></li>
+            }
+        }
+    </ol>
+</div>
+<div class="widget widget_text" style="top: 0px;">
+    <div style="width:100%;border-bottom: 2px solid #eee;"><strong style="font-size: 20px; line-height: 32px; font-family: inherit; bottom: -20px;">猜你喜欢</strong></div>
+    <ol>
+        @{
+            foreach (var item in Model.GetLikeArticle)
+            {
+                <li style="line-height:30px"><a href="@Url.Action("Index", "Article", new { id = @item.AID })">@item.TitleName</a></li>
+            }
+        }
+    </ol>
+</div>
+<div class="widget widget_text" style="top: 0px;">
+    <div style="width:100%;border-bottom: 2px solid #eee;"><strong style="font-size: 20px; line-height: 32px; font-family: inherit; bottom: -20px;">大家都在说</strong></div>
+    <ol>
+        @{
+            foreach (var item in Model.TopComment)
+            {
+                <li style="line-height:30px"><a href="@Url.Action("Index", "Article", new { id = @item.AID })">@item.TitleName</a></li>
+            }
+        }
+    </ol>
+</div>
+<hr />
+<div class="widget widget_text" style="top: 0px;">
+    <div style="width:100%;border-bottom: 2px solid #eee;"><strong style="font-size: 20px; line-height: 32px; font-family: inherit; bottom: -20px;">友情链接</strong></div>
+    <ol style="list-style:none;">
+        @{
+            foreach (var item in Model.FriendLinks)
+            {
+                <li style="line-height:30px"><a href="@item.LinkUrl">@item.LinkName</a></li>
+            }   
+        }
+    </ol>
+</div>
+<hr />
+<div class="widget widget_text" style="top: 0px;width:300px;height:300px;background-image:url('/imgart/syspic/square-image.png')">
+    @{
+        if (Model.AdvList != null)
+        {
+            foreach (var item in Model.AdvList)
+            {
+                if (item.AdvPID == 4)
+                {
+                    string pcon = item.AdvCode;
+                    string content = pcon.Replace("@content", item.ContentCode);
+                    @Html.Raw(content);
+                }
+            }
+        }
+    }
+</div> <!-- .sidebar-extra -->
+<br />

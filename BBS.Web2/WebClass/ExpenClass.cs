@@ -21,7 +21,7 @@ namespace System.Web.Mvc
         public static HtmlString MyPage(this HtmlHelper htmlHelper, int currentPage, int pageSize, int totalCount)
         {
             var redirectTo = htmlHelper.ViewContext.RequestContext.HttpContext.Request.Url.AbsolutePath;
-            Regex re1 = new Regex("_[1-9]{1,16}.html", RegexOptions.IgnoreCase);
+            Regex re1 = new Regex("_[0-9]{1,16}.html", RegexOptions.IgnoreCase);
             Match mc = re1.Match(redirectTo);
             if (string.IsNullOrWhiteSpace(mc.Value))
             {
@@ -37,7 +37,7 @@ namespace System.Web.Mvc
                 if (currentPage > 1)
                 {//处理上一页的连接
                     string str = "_" + (currentPage - 1).ToString() + ".html";
-                    Regex re = new Regex("_[1-9]{1,16}.html", RegexOptions.IgnoreCase);
+                    Regex re = new Regex("_[0-9]{1,16}.html", RegexOptions.IgnoreCase);
                     string url = re.Replace(redirectTo, str);
                     output.AppendFormat("<li><a href='{0}'>上一页</a> ", url.Replace("_1.html", ".html"));
                 }
@@ -50,14 +50,14 @@ namespace System.Web.Mvc
                         if (currint == i)
                         {//当前页处理                     
                             string str = "_"+currentPage.ToString() + ".html";
-                            Regex re = new Regex("_[1-9]{1,16}.html",RegexOptions.IgnoreCase);
+                            Regex re = new Regex("_[0-9]{1,16}.html",RegexOptions.IgnoreCase);
                             string url = re.Replace(redirectTo,str);
                             output.AppendFormat("<li class='active'><a >{0}</a></li> ", currentPage);
                         }
                         else
                         {//一般页处理
                             string str = "_" + (currentPage + i - currint).ToString() + ".html";
-                            Regex re = new Regex("_[1-9]{1,16}.html", RegexOptions.IgnoreCase);
+                            Regex re = new Regex("_[0-9]{1,16}.html", RegexOptions.IgnoreCase);
                             string url = re.Replace(redirectTo, str);
                             output.AppendFormat("<li><a href='{0}'>{1}</a></li> ", url.Replace("_1.html", ".html"), currentPage + i - currint);
                         }
@@ -67,7 +67,7 @@ namespace System.Web.Mvc
                 if (currentPage < totalPages)
                 {//处理下一页的链接
                     string str = "_" + (currentPage + 1).ToString() + ".html";
-                    Regex re = new Regex("_[1-9]{1,16}.html", RegexOptions.IgnoreCase);
+                    Regex re = new Regex("_[0-9]{1,16}.html", RegexOptions.IgnoreCase);
                     string url = re.Replace(redirectTo, str);
                     output.AppendFormat("<li><a href='{0}'>下一页</a></li> ", url.Replace("_1.html", ".html"));
                 }

@@ -25,6 +25,8 @@
     <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
     <!-- JS-->
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="@Url.Content( "/js/jquery.validate.min.js")"></script>
+    <script src="@Url.Content( "/js/jquery.validate.unobtrusive.min.js")"></script>
     <script src="@Url.Content( "/js/bootstrap.js")"></script>
     <script src="@Url.Content( "/js/jquery.prettyPhoto.js")"></script>
     <script src="@Url.Content( "/js/jquery.flexslider.js")"></script>
@@ -93,7 +95,7 @@
                         </li>
                         <li><a href="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</a></li>
                         <li><a href="@Url.Action("Index", "DiscussPart", new { area = "Discuss" })">Discuss</a></li>
-                        <li><a href="features.htm">ABOUT</a></li>
+                        <li><a href="@Url.Action("About", "Home", new { area = "" })">ABOUT</a></li>
                         <li><a href="page-contact.htm">Leave a message</a></li>
                     </ul>
                 </div>
@@ -110,7 +112,7 @@
                             <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 4 })">- World News</option>
                             <option value="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</option>
                             <option value="@Url.Action("Index", "DiscussPart", new { area = "Discuss" })">Discuss</option>
-                            <option value="blog-style1.htm">ABOUT</option>
+                            <option value="@Url.Action("About", "Home", new { area = "" })">ABOUT</option>
                             <option value="page-contact.htm">Leave a message</option>
                         </select>
                     </div>
@@ -188,5 +190,6 @@
     </div><!-- End Footer -->
     <!-- Scroll to Top -->
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
+    @RenderSection("footScript", required: false)
 </body>
 </html>

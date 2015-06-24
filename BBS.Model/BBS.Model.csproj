@@ -54,6 +54,7 @@
     <Compile Include="MemberInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeoInfoModel.cs" />
+    <Compile Include="SuggestionInfo.cs" />
     <Compile Include="SysConfig.cs" />
     <Compile Include="TagInfo.cs" />
   </ItemGroup>

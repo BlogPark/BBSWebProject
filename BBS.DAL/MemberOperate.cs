@@ -50,7 +50,7 @@ WHERE   [Status] = 20
         /// </summary>
         /// <param name="mid"></param>
         /// <returns></returns>
-        public MemberInfo GetMemberInfoByID(int  mid)
+        public MemberInfo GetMemberInfoByID(int mid)
         {
             MemberInfo info = new MemberInfo();
             string sqltxt = @"SELECT  MID ,
@@ -62,11 +62,47 @@ FROM    qds157425440_db.dbo.MemberInfo WITH(NOLOCK)
 WHERE mid=@id";
             using (SqlConnection conn = new SqlConnection(sqlconnectstr))
             {
-                info = conn.Query<MemberInfo>(sqltxt, new { id=mid}).ToList<MemberInfo>().FirstOrDefault();
+                info = conn.Query<MemberInfo>(sqltxt, new { id = mid }).ToList<MemberInfo>().FirstOrDefault();
             }
             return info;
         }
-
+        /// <summary>
+        /// 根据会员名称或邮箱和密码得到会员信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MemberInfo GetMemberInfo(MemberInfo model)
+        {
+            MemberInfo info = null;
+            string sqltxt = @"SELECT  MID ,
+        Name ,
+        HeadPic ,
+        Email ,
+        Birthday ,
+        Addtime ,
+        UpdateTime ,
+        mURL ,
+        [Description] ,
+        sex ,
+        Tags ,
+        Likes ,
+        IsRecommend ,
+        IsBlogUser ,
+        BlogUserName ,
+        BlogDecription ,
+        BlogCount
+FROM    qds157425440_db.dbo.MemberInfo WITH ( NOLOCK )
+WHERE   ( Name = @str
+          OR Email = @str
+        )
+        AND [Password] = @password
+        AND [Status] = 20";
+            using (SqlConnection conn = new SqlConnection(sqlconnectstr))
+            {
+                info = conn.Query<MemberInfo>(sqltxt, new { str = model.Name.Trim(), password = model.Password }).ToList<MemberInfo>().FirstOrDefault();
+            }
+            return info;
+        }
         #endregion
     }
 }

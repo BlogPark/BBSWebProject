@@ -30,6 +30,15 @@ namespace BBS.BLL
         {
             return dal.GetMemberInfoByID(mid);
         }
+        /// <summary>
+        /// 根据会员名称或邮箱和密码得到会员信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MemberInfo GetMemberInfo(MemberInfo model)
+        {
+            return dal.GetMemberInfo(model);
+        }
           #endregion
     }
 }

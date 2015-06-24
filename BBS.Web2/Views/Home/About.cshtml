@@ -1,5 +1,56 @@
 ﻿@{
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
 }
+@model BBS.Web2.Models.AboutPageViewModel
+<div class="row">
+    <!--Container row-->
+    <div class="span8 contact">
+        <!--Begin page content column-->
+        <h2>关于我和我的网站</h2>
+        <p>这是一个发布互联网各色新闻的地方；这是一个可以发表自己文章的地方；这是一个可以和朋友们分享讨论话题的地方。这个网站的开发和建立本就出于自己的好奇心和学习欲。我会尽量搜集各类的新闻信息来呈献给大家，同时也希望喜欢跟我一起玩的同志们来一起跟我修改这个网站。让它更具有新鲜的活力，为大家的休闲生活加点不一样的作料。</p>
+        <div class="alert alert-block">
+            欢迎给我留言，我将认真对待您的每一条珍贵的建议   <a href="@Url.Action("Login", "Home", new { area=""})">去注册个账户</a>       
+        </div>
+        @using (Html.BeginForm("SubmitSugertion", "Home", FormMethod.Post, new { @id = "contact-form" }))
+        {
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-edit"></i></span>
+                @Html.TextBoxFor(m => Model.Suggestion.STitle, new { @class = "span4", @placeholder = "标题", @size = "16" })
+            </div>
+            @Html.TextAreaFor(m => Model.Suggestion.SContent, new { @class = "span6" })
+            <div class="row">
+                <div class="span2">
+                    <input type="submit" class="btn btn-inverse" value="提交">
+                </div>
+            </div>
+        }
 
-<h2>关于我们</h2>
+    </div>
+    <!--End page content column-->
+
+    <!-- Sidebar
+        ================================================== -->
+    <div class="span4 sidebar page-sidebar">
+        <!-- Begin sidebar column -->
+        <h5 class="title-bg">Our Location</h5>
+        <address>
+            <strong>Piccolo</strong><br>
+            123 Main St, Suite 600<br>
+            San Francisco, CA 94107<br>
+            <abbr title="Phone">P:</abbr>
+            (123) 456-7890
+           
+        </address>
+
+        <address>
+            <strong>Jimmy Doe</strong><br>
+            <a href="mailto:#">first.last@gmail.com</a>
+        </address>
+
+        <h5 class="title-bg">Map Us</h5>
+        <img src="img/location-map.jpg" alt="map">
+    </div>
+    <!-- End sidebar column -->
+
+</div>
+<!-- End container row -->

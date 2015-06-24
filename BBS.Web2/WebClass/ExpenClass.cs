@@ -9,7 +9,7 @@ namespace System.Web.Mvc
 {
     public static class ExpenClass
     {
-        /// <summary>
+        /// <summary> 
         /// 个人扩展分页
         /// </summary>
         /// <param name="html"></param>

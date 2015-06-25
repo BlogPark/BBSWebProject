@@ -103,6 +103,95 @@ WHERE   ( Name = @str
             }
             return info;
         }
+
+        /// <summary>
+        /// 根据会员名称或邮箱和密码得到会员信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MemberInfo GetMemberInfo(string name,string email)
+        {
+            MemberInfo info = null;
+            string sqltxt = @"SELECT  MID ,
+        Name ,
+        HeadPic ,
+        Email ,
+        Birthday ,
+        Addtime ,
+        UpdateTime ,
+        mURL ,
+        [Description] ,
+        sex ,
+        Tags ,
+        Likes ,
+        IsRecommend ,
+        IsBlogUser ,
+        BlogUserName ,
+        BlogDecription ,
+        BlogCount
+FROM    qds157425440_db.dbo.MemberInfo WITH ( NOLOCK )
+WHERE   ( Name = @str
+          OR Email = @str
+          OR Name = @str1
+          OR Email = @str1
+        )
+        AND [Status] = 20";
+            using (SqlConnection conn = new SqlConnection(sqlconnectstr))
+            {
+                info = conn.Query<MemberInfo>(sqltxt, new { str = name.Trim(), str1 = email.Trim() }).ToList<MemberInfo>().FirstOrDefault();
+            }
+            return info;
+        }
+        /// <summary>
+        /// 快速注册会员
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MemberInfo FastRegisterMember(MemberInfo model)
+        {
+            MemberInfo info = null;
+            string sqltxt = @"INSERT  INTO qds157425440_db.dbo.MemberInfo
+        ( Name ,
+          Email ,
+          [Password] ,
+          [Status] ,
+          Addtime ,
+          UpdateTime 
+        )
+VALUES  ( @Name ,
+          @Email ,
+          @Password ,
+          20 ,
+          GETDATE() ,
+          GETDATE()
+        )
+DECLARE @id INT
+SET @id = @@IDENTITY
+SELECT  MID ,
+        Name ,
+        HeadPic ,
+        Email ,
+        Birthday ,
+        Addtime ,
+        UpdateTime ,
+        mURL ,
+        [DESCRIPTION] ,
+        sex ,
+        Tags ,
+        Likes ,
+        IsRecommend ,
+        IsBlogUser ,
+        BlogUserName ,
+        BlogDecription ,
+        BlogCount
+FROM    qds157425440_db.dbo.MemberInfo WITH ( NOLOCK )
+WHERE   mid = @id";
+            using (SqlConnection conn = new SqlConnection(sqlconnectstr))
+            {
+                info = conn.Query<MemberInfo>(sqltxt, new { Name = model.Name.Trim(), Email = model.Email, Password = model.Password }).ToList<MemberInfo>().FirstOrDefault();
+            }
+            return info;
+        }
         #endregion
     }
 }

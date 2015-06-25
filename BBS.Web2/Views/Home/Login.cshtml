@@ -33,34 +33,39 @@
             </form>
         </div>
         <div id="Registereddiv" style="height: 300px;">
-            <form action="#" id="contact-form1" style="padding: 20px 10px;">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-user"></i></span>
-                    @Html.TextBoxFor(model => Model.Name, new { @size = "16", @class = "span4", @placeholder = "名字" }))
-                </div>
-                <br />
+            <div style="padding: 20px 10px;" id="rfrom">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-envelope"></i></span>
-                    @Html.TextBoxFor(model => Model.email, new { @size = "16", @class = "span4", @placeholder = "邮箱" }))
+                    <input type="email" class="span4" size="16" placeholder="邮箱" autocomplete="off" name="email" id="email" />
                 </div>
+                <div id="erroremail">@Html.ValidationMessageFor(m => Model.email)</div>
                 <br />
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-lock"></i></span>
-                    <input class="span4" id="prependedInput3" size="16" type="password" placeholder="密码">
+                    <input class="span4" id="prependedInput3" size="16" type="password" placeholder="密码" onchange="changpwd()">
                 </div>
+                <div id="errorepwd"></div>
                 <br />
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-lock"></i></span>
-                    @Html.TextBoxFor(model => Model.Password, new { @size = "16", @class = "span4", @placeholder = "确认密码" }))
+                    @Html.PasswordFor(model => Model.Password, new { @size = "16", @class = "span4", @placeholder = "确认密码", @onchange = "changpwd()" }))
                 </div>
+                <div id="errorepassword">@Html.ValidationMessageFor(m => Model.Password)</div>
+                <br />
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-user"></i></span>
+                    @Html.TextBoxFor(model => Model.Name, new { @size = "16", @class = "span4", @placeholder = "名字" }))                    
+                </div>
+                <div id="errorname">@Html.ValidationMessageFor(m => Model.Name)</div>
                 <br />
                 <div class="row">
                     <div class="span5">
-                        <input type="button" class="btn btn-inverse" value="注  册" id="regiterbtn">
+                        <input type="button" class="btn btn-inverse" value="注  册" id="rbtnsub">
                         <a id="gologin" style="cursor: pointer">已有账号   去登录>></a>
                     </div>
                 </div>
-            </form>
+                <div id="tooltip" style="font-size: 12px; color: #f00;">注：为了您的账户安全，建议注册时不要使用自己常用安全密码进行注册</div>
+            </div>
         </div>
     </div>
 </div>
@@ -78,6 +83,52 @@
                 $("#logindiv").show();
                 $("#Registereddiv").hide();
             });
+
+            $("#rbtnsub").click(function () {
+                var model = {
+                    Name: $("#rfrom #Name").val(),
+                    Password: $("#rfrom #Password").val(),
+                    email: $("#rfrom #email").val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("RegisterMember", "Home", new { area = "" })",
+                    dataType: "json",
+                   contentType: 'application/json;charset=utf-8',
+                   data: JSON.stringify(model),
+                   success: function (data) {
+                       var str = data;
+                       if (str == "1") {
+                           window.open(@Url.Action("Index", "Home", new { area = "" }));
+                        }
+                        else { $("#rfrom #errorname").html(str); }
+                   }
+               });
+               @*  $.ajax({
+                    url: '@Url.Action("RegisterMember", "Home", new { area = "" })',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify(model),
+                    success: function (data) {
+                        var str = data;
+                        if (str == "1") {
+                            window.open(@Url.Action("Index", "Home", new { area = "" }));
+                        }
+                        else { $("#rfrom #errorname").html(str); }
+                    }
+                });*@
+            });
         });
+        function changpwd() {
+            var pwd1 = $("#prependedInput3").val();
+            var pwd2 = $("#rfrom #Password").val();
+            if (pwd2 != "") {
+                if (pwd1 != pwd2) {
+                    $("#errorepwd").html("两次输入的密码不一致");
+                    $("#rfrom #Password").val("");
+                }
+                else { $("#errorepwd").html("") }
+            }
+        }
     </script>
 }

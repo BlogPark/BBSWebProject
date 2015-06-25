@@ -39,6 +39,24 @@ namespace BBS.BLL
         {
             return dal.GetMemberInfo(model);
         }
+         /// <summary>
+        /// 快速注册会员
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MemberInfo FastRegisterMember(MemberInfo model)
+        {
+            return dal.FastRegisterMember(model);
+        }
+        /// <summary>
+        /// 根据会员名称或邮箱和密码得到会员信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public MemberInfo GetMemberInfo(string name,string email)
+        {
+            return dal.GetMemberInfo(name,email);
+        }
           #endregion
     }
 }

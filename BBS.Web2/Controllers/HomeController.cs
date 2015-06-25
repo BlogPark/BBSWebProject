@@ -116,10 +116,58 @@ namespace BBS.Web2.Controllers
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
         }
+        /// <summary>
+        /// 快速注册会员
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="souceurl"></param>
+        /// <returns></returns>
         [HttpPost]
-        public ActionResult RegisterMember(LoginViewModel model,string souceurl="")
+        public ActionResult RegisterMember(LoginViewModel model)
         {
-            return View();
+            if (model.email == null || model.Password == null || model.Name == null)
+            {
+                return Json("注册信息不完整");
+            }
+            if (string.IsNullOrWhiteSpace(model.Name) || string.IsNullOrWhiteSpace(model.Password) || string.IsNullOrWhiteSpace(model.email))
+            {
+                return Json("注册信息不完整");
+            }
+            MemberInfo ifo = mbll.GetMemberInfo(model.Name, model.email);
+            if (ifo != null)
+            {
+                return Json("该注册账户已存在");
+            }
+            MemberInfo minfo = new MemberInfo();
+            minfo.Name = model.Name.Trim();
+            minfo.Password = model.Password;
+            minfo.Email = model.email.Trim();
+            MemberInfo info = mbll.FastRegisterMember(minfo);
+            if (info == null)
+            {
+                ModelState.AddModelError("Password", "用户名或密码错误");
+                return RedirectToAction("Login", "Home", model);
+            }
+            else
+            {
+                //设置session和cookie
+                Session["member"] = info;
+                if (Request.Cookies["visitorid"] != null)
+                {
+                    HttpCookie _cookie = Request.Cookies["visitorid"];
+                    _cookie.Value = info.MID.ToString();
+                    _cookie.Expires = DateTime.Now.AddDays(2);
+                    Response.Cookies.Add(_cookie);
+                }
+                else
+                {
+                    HttpCookie aCookie = new HttpCookie("visitorid");
+                    aCookie.Value = info.MID.ToString();
+                    aCookie.Expires = DateTime.Now.AddDays(2);
+                    Response.Cookies.Add(aCookie);
+                }
+            }
+            return Json("1");
         }
         protected override void OnException(ExceptionContext filterContext)
         {

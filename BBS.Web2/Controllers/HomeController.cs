@@ -102,7 +102,7 @@ namespace BBS.Web2.Controllers
                 else
                 {
                     HttpCookie aCookie = new HttpCookie("visitorid");
-                    aCookie.Value = info.MID.ToString();
+                    aCookie.Value = info.MID.ToString()+","+info.Name.ToString();
                     aCookie.Expires = DateTime.Now.AddDays(2);
                     Response.Cookies.Add(aCookie);
                 }
@@ -162,7 +162,7 @@ namespace BBS.Web2.Controllers
                 else
                 {
                     HttpCookie aCookie = new HttpCookie("visitorid");
-                    aCookie.Value = info.MID.ToString();
+                    aCookie.Value = info.MID.ToString() + "," + info.Name.ToString();
                     aCookie.Expires = DateTime.Now.AddDays(2);
                     Response.Cookies.Add(aCookie);
                 }

@@ -104,19 +104,6 @@
                         else { $("#rfrom #errorname").html(str); }
                    }
                });
-               @*  $.ajax({
-                    url: '@Url.Action("RegisterMember", "Home", new { area = "" })',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: JSON.stringify(model),
-                    success: function (data) {
-                        var str = data;
-                        if (str == "1") {
-                            window.open(@Url.Action("Index", "Home", new { area = "" }));
-                        }
-                        else { $("#rfrom #errorname").html(str); }
-                    }
-                });*@
             });
         });
         function changpwd() {

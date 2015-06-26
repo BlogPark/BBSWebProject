@@ -16,7 +16,7 @@ namespace System.Web.Mvc
             {
                 string s = filterContext.RequestContext.HttpContext.Request.Url.ToString();
                 //filterContext.Result = new RedirectResult("/Admin/SysUser/Login");
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "action", "Login" }, { "controller", "Home" }, { "returnurl", s } });
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "action", "Login" }, { "controller", "Home" }, { "souceurl", s } });
             }
             return;
         }

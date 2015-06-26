@@ -59,5 +59,36 @@ WHERE CategoryID=@cateid AND Astatus=30";
             model.Articles = result;
             return model;
         }
+
+        #region for web2
+        /// <summary>
+        /// 提价留言
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int InsertSuggest(SuggestionInfo model)
+        {
+            string sqltxt = @"INSERT  INTO qds157425440_db.dbo.SuggestionInfo
+        ( SUserID ,
+          SUserName ,
+          STitle ,
+          SContent ,
+          SStatus 
+        )
+VALUES  ( @SUserID ,
+          @SUserName ,
+          @STitle ,
+          @SContent ,
+          10
+        )";
+            int result = 0;
+            using (SqlConnection conn = new SqlConnection(sqlconnectstr))
+            {
+                conn.Open();
+                result = conn.Execute(sqltxt, new { SUserID = model.SUserID, SUserName = model.SUserName, STitle = model.STitle, SContent = model.SContent });
+            }
+            return result;
+        }
+        #endregion
     }
 }

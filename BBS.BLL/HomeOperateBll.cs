@@ -14,5 +14,16 @@ namespace BBS.BLL
       {
           return hdal.GetCategoryData(cateid);
       }
+        #region for web2
+      /// <summary>
+        /// 提价留言
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+      public int InsertSuggest(SuggestionInfo model)
+      {
+          return hdal.InsertSuggest(model);
+      }
+        #endregion
     }
 }

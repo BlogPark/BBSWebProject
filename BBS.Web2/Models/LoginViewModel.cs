@@ -32,5 +32,10 @@ namespace BBS.Web2.Models
         /// </summary>
          [DataMember]
         public string email { get; set; }
+       /// <summary>
+       /// 来源URL
+       /// </summary>
+         [DataMember]
+         public string resutnurl { get; set; }
     }
 }

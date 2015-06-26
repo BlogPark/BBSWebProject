@@ -9,22 +9,26 @@
         <h2>关于我和我的网站</h2>
         <p>这是一个发布互联网各色新闻的地方；这是一个可以发表自己文章的地方；这是一个可以和朋友们分享讨论话题的地方。这个网站的开发和建立本就出于自己的好奇心和学习欲。我会尽量搜集各类的新闻信息来呈献给大家，同时也希望喜欢跟我一起玩的同志们来一起跟我修改这个网站。让它更具有新鲜的活力，为大家的休闲生活加点不一样的作料。</p>
         <div class="alert alert-block">
-            欢迎给我留言，我将认真对待您的每一条珍贵的建议   <a href="@Url.Action("Login", "Home", new { area=""})">去注册个账户</a>       
+            欢迎给我留言，我将认真对待您的每一条珍贵的建议   <a href="@Url.Action("Login", "Home", new { area = "" })">去注册个账户</a>
         </div>
-        @using (Html.BeginForm("SubmitSugertion", "Home", FormMethod.Post, new { @id = "contact-form" }))
-        {
+        <div id="contact-form">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-edit"></i></span>
-                @Html.TextBoxFor(m => Model.Suggestion.STitle, new { @class = "span4", @placeholder = "标题", @size = "16" })
+                @Html.TextBoxFor(m => Model.Title, new { @class = "span4", @placeholder = "标题", @size = "16" })
             </div>
-            @Html.TextAreaFor(m => Model.Suggestion.SContent, new { @class = "span6" })
+            @Html.TextAreaFor(m => Model.Content, new { @class = "span6" })
             <div class="row">
                 <div class="span2">
-                    <input type="submit" class="btn btn-inverse" value="提交">
+                    <input type="button" class="btn btn-inverse" value="提交" id="subbtn">
                 </div>
             </div>
-        }
-
+        </div>
+        <div class="alert alert-success" id="showresult">
+            您的留言已成功提交，非常感谢您的宝贵意见       
+        </div>
+        <div class="alert alert-error" id="showresult1">
+            非常抱歉由于系统出错，您的意见暂时未能提交。感谢您对本网的大力支持
+        </div>
     </div>
     <!--End page content column-->
 
@@ -54,3 +58,37 @@
 
 </div>
 <!-- End container row -->
+@section footScript{
+    <script type="text/javascript">
+        $(function () {
+            $("#showresult").hide();
+            $("#showresult1").hide();
+            $("#subbtn").click(function () {
+                var model = {
+                    Title: $("#contact-form #Title").val(),
+                    Content: $("#contact-form #Content").val()
+                };
+                var s = "@Url.Action("Login", "Home", new { area = "", souceurl = "http://dev.kaifanews.com/home/about" })";
+                $.ajax({
+                    url: "@Url.Action("SubmitSugertion", "Home", new { area = "" })",
+                    type: "POST",
+                    dataType: "json",
+                    data: JSON.stringify(model),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        var str = data;
+                        if (str == "1") {
+                            setTimeout('$("#showresult").show()', 3000);
+                        }
+                        if (str == "2") {
+                            window.open(s);
+                        }
+                        else {
+                            setTimeout('$("#showresult1").show()', 3000);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

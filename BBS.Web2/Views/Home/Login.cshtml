@@ -22,6 +22,7 @@
                 </div>
                 <div>@Html.ValidationMessageFor(m => Model.Password)</div>
                 <br />
+                @Html.HiddenFor(model=>Model.resutnurl)
                 <div class="row">
                     <div class="span4">
                         <input type="submit" class="btn btn-inverse" value="登  录" id="btnlogin">
@@ -99,7 +100,7 @@
                    success: function (data) {
                        var str = data;
                        if (str == "1") {
-                           window.open(@Url.Action("Index", "Home", new { area = "" }));
+                          window.open("@Url.Action("Index", "Home", new { area = "" })");
                         }
                         else { $("#rfrom #errorname").html(str); }
                    }

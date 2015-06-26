@@ -17,6 +17,7 @@ namespace BBS.Web2.Controllers
         private RightSideDataBLL rbll = new RightSideDataBLL();
         private MemberOperaterBll mbll = new MemberOperaterBll();
         private SeoInfroBll sbll = new SeoInfroBll();
+        private HomeOperateBll hbll = new HomeOperateBll();
         public ActionResult Index()
         {
             SeoInfoModel seoinfo = sbll.Getseoinfo("网站首页");
@@ -38,11 +39,32 @@ namespace BBS.Web2.Controllers
             AboutPageViewModel model = new AboutPageViewModel();
             return View(model);
         }
+        /// <summary>
+        /// 提交留言
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
+        //[UserAuthorize]        
         public ActionResult SubmitSugertion(AboutPageViewModel model)
         {
-
-            return View();
+            MemberInfo info = (MemberInfo)Session["member"];
+            if (info == null)
+            {                
+                return Json("2");
+            }
+            SuggestionInfo smodel = new SuggestionInfo();
+            smodel.SUserID = info.MID;
+            smodel.SUserName = info.Name;
+            smodel.STitle = model.Title.Trim();
+            smodel.SContent = model.Content.Trim();
+            int result = hbll.InsertSuggest(smodel);
+            if (result > 0)
+            {
+                return Json("1");
+            }
+            else
+                return Json("错误");
         }
 
         /// <summary>
@@ -61,9 +83,11 @@ namespace BBS.Web2.Controllers
         /// 登录panel
         /// </summary>
         /// <returns></returns>
-        public ActionResult Login()
+        public ActionResult Login(string souceurl = "")
         {
-            return View();
+            LoginViewModel model = new LoginViewModel();
+            model.resutnurl = souceurl;
+            return View(model);
         }
         [HttpPost]
         public ActionResult Login(LoginViewModel model, string souceurl = "")
@@ -102,7 +126,7 @@ namespace BBS.Web2.Controllers
                 else
                 {
                     HttpCookie aCookie = new HttpCookie("visitorid");
-                    aCookie.Value = info.MID.ToString()+","+info.Name.ToString();
+                    aCookie.Value = info.MID.ToString() + "," + info.Name.ToString();
                     aCookie.Expires = DateTime.Now.AddDays(2);
                     Response.Cookies.Add(aCookie);
                 }
@@ -110,6 +134,10 @@ namespace BBS.Web2.Controllers
             if (!string.IsNullOrWhiteSpace(souceurl))
             {
                 return Redirect(souceurl);
+            }
+            else if (!string.IsNullOrWhiteSpace(model.resutnurl))
+            {
+                return Redirect(model.resutnurl);
             }
             else
             {
@@ -169,6 +197,10 @@ namespace BBS.Web2.Controllers
             }
             return Json("1");
         }
+        /// <summary>
+        /// 错误处理页
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnException(ExceptionContext filterContext)
         {
             RedirectToAction("Error", "Home", new { area = "" });

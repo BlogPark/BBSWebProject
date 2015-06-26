@@ -198,6 +198,24 @@ namespace BBS.Web2.Controllers
             return Json("1");
         }
         /// <summary>
+        /// 头部栏
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Top()
+        {
+            TopPartModel model = new TopPartModel();
+            MemberInfo info = (MemberInfo)Session["member"];
+            if (info == null)
+                model.IsHaveUser = false;
+            else
+            {
+                model.IsHaveUser = true;
+                model.UserID = info.MID;
+                model.UserName = info.Name;
+            }
+            return PartialView("_Top",model);
+        }
+        /// <summary>
         /// 错误处理页
         /// </summary>
         /// <param name="filterContext"></param>

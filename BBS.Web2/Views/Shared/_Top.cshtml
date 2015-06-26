@@ -1,0 +1,21 @@
+﻿@model BBS.Web2.Models.TopPartModel
+<div class="color-bar-1">
+    <div class="container">
+        <div class="row">
+            <div class="span9">开发新闻网</div>
+            <div class="span3">
+                &nbsp;
+                @{
+                    if (Model.IsHaveUser)
+                    {
+                    <lable>欢迎回来! &nbsp;<a href="#">@Model.UserName</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">退出</a></lable>
+                    }
+                    else
+                    {
+                    <a href="@Url.Action("Login", "Home", new { area = "" })">请登录</a>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

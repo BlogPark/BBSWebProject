@@ -9,7 +9,7 @@
         <h2>关于我和我的网站</h2>
         <p>这是一个发布互联网各色新闻的地方；这是一个可以发表自己文章的地方；这是一个可以和朋友们分享讨论话题的地方。这个网站的开发和建立本就出于自己的好奇心和学习欲。我会尽量搜集各类的新闻信息来呈献给大家，同时也希望喜欢跟我一起玩的同志们来一起跟我修改这个网站。让它更具有新鲜的活力，为大家的休闲生活加点不一样的作料。</p>
         <div class="alert alert-block">
-            欢迎给我留言，我将认真对待您的每一条珍贵的建议   <a href="@Url.Action("Login", "Home", new { area = "" })">去注册个账户</a>
+            欢迎给我留言，我将认真对待您的每一条珍贵的建议   
         </div>
         <div id="contact-form">
             <div class="input-prepend">
@@ -36,23 +36,19 @@
         ================================================== -->
     <div class="span4 sidebar page-sidebar">
         <!-- Begin sidebar column -->
-        <h5 class="title-bg">Our Location</h5>
+        <h5 class="title-bg">地址</h5>
         <address>
-            <strong>Piccolo</strong><br>
-            123 Main St, Suite 600<br>
-            San Francisco, CA 94107<br>
-            <abbr title="Phone">P:</abbr>
-            (123) 456-7890
-           
+            <strong>北京市</strong><br>
+            朝阳区光华路<br>
+            世贸天阶<br>
+            <abbr title="Phone">联系邮箱</abbr>
+            postmaster@kaifanews.com           
         </address>
 
         <address>
-            <strong>Jimmy Doe</strong><br>
-            <a href="mailto:#">first.last@gmail.com</a>
+            <strong>网站管理员</strong><br>
+            <a href="mailto:postmaster@kaifanews.com">postmaster@kaifanews.com    </a>
         </address>
-
-        <h5 class="title-bg">Map Us</h5>
-        <img src="img/location-map.jpg" alt="map">
     </div>
     <!-- End sidebar column -->
 
@@ -78,13 +74,17 @@
                     success: function (data) {
                         var str = data;
                         if (str == "1") {
-                            setTimeout('$("#showresult").show()', 3000);
+                            $("#showresult").show();
+                            $("#contact-form #Title").val("");
+                            $("#contact-form #Title").val("");
+                            setTimeout('$("#showresult").hide()', 3000);
                         }
                         if (str == "2") {
-                            window.open(s);
+                            window.open(s, "_self");
                         }
-                        else {
-                            setTimeout('$("#showresult1").show()', 3000);
+                        if (str != "1" && str != "2") {
+                            $("#showresult1").show();
+                            setTimeout('$("#showresult1").hide()', 3000);
                         }
                     }
                 });

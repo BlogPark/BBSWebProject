@@ -8,7 +8,7 @@
                 @{
                     if (Model.IsHaveUser)
                     {
-                    <lable>欢迎回来! &nbsp;<a href="#">@Model.UserName</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">退出</a></lable>
+                    <lable>欢迎回来! &nbsp;<a href="@Url.Action("Index", "MemberCenter", new { area="Member"})">@Model.UserName</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">退出</a></lable>
                     }
                     else
                     {

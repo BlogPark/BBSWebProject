@@ -6,8 +6,8 @@ using BBS.Model;
 
 namespace BBS.Web2.Areas.Member.Models
 {
-    public class MembermsgViewModel
+    public class LeftsidePartModel
     {
-        public MemberInfo member { get; set; }       
+        public MemberInfo member { get; set; }
     }
 }

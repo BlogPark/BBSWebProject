@@ -1,14 +1,28 @@
-﻿
+﻿@model BBS.Web2.Areas.Member.Models.LeftsidePartModel
 <ul class="popular-posts">
     <li>
-        <a href="#"><img src="/img/user-avatar1.jpg" alt="Popular Post"></a>
-        <h6><a href="#">Mr. Zhang</a></h6>
-        <em>Posted on 09/01/15</em>
+        <a href="#">
+            @{
+                string pic = Model.member.HeadPic;
+                if (string.IsNullOrWhiteSpace(pic))
+                {
+                    pic = @"http://www.kaifanews.com/img/user-avatar1.jpg";
+                }
+                <img src="@pic" alt="@Model.member.Name">
+            }
+        </a>
+        <h6><a href="#">@Model.member.Name</a></h6>
+        <em>加入时间： @Model.member.Addtime.ToString("yyyy-MM-dd")</em>
     </li>
 </ul>
 <h5 class="title-bg">菜单</h5>
 <ul class="post-category-list">
-    <li><a href="#"><i class="icon-plus-sign"></i>发表博文</a></li>
+    @{
+        if (Model.member.IsBlogUser > 0)
+        { <li><a href="#"><i class="icon-plus-sign"></i>发表博文</a></li>}
+        else
+        {<li><a href="#"><i class="icon-plus-sign"></i>开通博客</a></li> }
+    }
     <li><a href="#"><i class="icon-plus-sign"></i>提出话题</a></li>
     <li><a href="#"><i class="icon-refresh"></i>更新资料</a></li>
 </ul>

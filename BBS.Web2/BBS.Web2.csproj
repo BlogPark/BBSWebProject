@@ -130,6 +130,7 @@
     <Compile Include="Areas\Discuss\Models\PartialViewModel.cs" />
     <Compile Include="Areas\Member\Controllers\MemberCenterController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
+    <Compile Include="Areas\Member\Models\LeftsidePartModel.cs" />
     <Compile Include="Areas\Member\Models\MembermsgViewModel.cs" />
     <Compile Include="Areas\News\Controllers\NewsPartController.cs" />
     <Compile Include="Areas\News\Models\CatePageViewModel.cs" />

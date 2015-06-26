@@ -87,7 +87,7 @@ WHERE mid=@id";
         Tags ,
         Likes ,
         IsRecommend ,
-        IsBlogUser ,
+        ISNULL(IsBlogUser,0)  IsBlogUser,
         BlogUserName ,
         BlogDecription ,
         BlogCount
@@ -125,7 +125,7 @@ WHERE   ( Name = @str
         Tags ,
         Likes ,
         IsRecommend ,
-        IsBlogUser ,
+        ISNULL(IsBlogUser,0)  IsBlogUser ,
         BlogUserName ,
         BlogDecription ,
         BlogCount
@@ -156,14 +156,16 @@ WHERE   ( Name = @str
           [Password] ,
           [Status] ,
           Addtime ,
-          UpdateTime 
+          UpdateTime,
+          IsBlogUser 
         )
 VALUES  ( @Name ,
           @Email ,
           @Password ,
           20 ,
           GETDATE() ,
-          GETDATE()
+          GETDATE(),
+          0
         )
 DECLARE @id INT
 SET @id = @@IDENTITY

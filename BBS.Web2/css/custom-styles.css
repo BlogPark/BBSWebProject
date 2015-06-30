@@ -1692,3 +1692,8 @@ a.accordion-toggle
 {
     height:50px;
 }
+.member-input-prepend {
+  margin-bottom: 5px;
+  font-size: 15;
+  white-space: nowrap;
+}

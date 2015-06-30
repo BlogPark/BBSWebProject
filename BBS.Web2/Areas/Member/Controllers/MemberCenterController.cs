@@ -60,9 +60,9 @@ namespace BBS.Web2.Areas.Member.Controllers
              return View();
          }
          [HttpPost]
-         public ActionResult PublishDiscuss(MembermsgViewModel model)
+         public ActionResult PublishDiscuss(string title,string content)
          {
-             return View();
+             return Json(title);
          }
 
         protected override void OnException(ExceptionContext filterContext)

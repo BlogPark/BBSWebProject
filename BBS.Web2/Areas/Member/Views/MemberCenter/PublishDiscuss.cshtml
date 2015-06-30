@@ -1,0 +1,61 @@
+﻿@{
+    Layout = "~/Areas/Member/Views/Shared/_LayoutMember.cshtml";
+}
+<div class="row">
+    <!--Container row-->
+    <!-- Page Sidebar
+    ================================================== -->
+    <div class="span3 sidebar page-left-sidebar">
+        @Html.Action("Leftside", "MemberCenter", new { area = "Member" })
+    </div>
+    <!-- End sidebar column -->
+    <!-- Page Content
+    ================================================== -->
+    <div class="span9">
+        <h6 class="title-bg">发起话题</h6>
+        <br />
+        <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+        <div class="member-input-prepend">
+            <lable>讨论内容：</lable>
+            <textarea class="span6" rows="10" id="textcontent"></textarea>
+        </div>
+        <div class="row">
+            <div class="span4" style="text-align: center;">
+                <input type="button" class="btn btn-inverse" value="发起讨论" id="subform">
+            </div>
+        </div>
+    </div>
+</div>
+@section footScript{
+    <script type="text/javascript">
+        $("#subform").click(function () {
+            var title = $("#title").val();
+            var content = $("#textcontent").val();
+            if (title == "")
+            {
+                alert("必须输入话题标题！");
+                return;
+            }
+            if (content == "") {
+                alert("必须输入话题内容！");
+                return;
+            }
+            $.ajax({
+                url: "@Url.Action("PublishDiscuss", "MemberCenter", new { area="Member"})",
+                data: { "title": title, "content": content },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                  
+                 
+                        alert(data);
+                    
+                }
+            });
+        });
+    </script>
+}

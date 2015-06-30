@@ -530,6 +530,7 @@
     <Content Include="Areas\Member\Views\Shared\_LayoutMember.cshtml" />
     <Content Include="Areas\Member\Views\MemberCenter\Index.cshtml" />
     <Content Include="Areas\Member\Views\Shared\_memleftpartial.cshtml" />
+    <Content Include="Areas\Member\Views\MemberCenter\PublishDiscuss.cshtml" />
     <None Include="Properties\PublishProfiles\newweb2.pubxml" />
     <None Include="Properties\PublishProfiles\web2.pubxml" />
     <Content Include="Views\Home\About.cshtml" />

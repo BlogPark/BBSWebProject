@@ -1,3 +1,5 @@
+ï»¿
+
 html, body
 {
     font-size: 16px;
@@ -35,7 +37,7 @@ body
 /***** Titles and Headings *****/
 h1, h2, h3, h4, h5, h6
 {
-    font-family: "Î¢ÈíÑÅºÚ";
+    font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";
     font-weight: normal;
     text-transform: uppercase;
 }
@@ -532,7 +534,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu
         font-style: normal;
         text-shadow: none;
         display: block;
-        font-family: "Î¢ÈíÑÅºÚ";
+        font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";
         font-weight: normal;
         text-transform: uppercase;
     }
@@ -1157,7 +1159,69 @@ p.side
         width: 300px;
     }
 }
+/**************************************
+/ Footer
+**************************************/
+.member-container
+{
+    width: 100%;
+    background: #333;
+    clear: both;
+    position: relative;
+    z-index: 10;
+}
 
+.member-row
+{
+    margin-top: 30px;
+}
+
+.member-col
+{
+    color: #ababab;
+    font-size: 13px;
+}
+
+    .member-col a
+    {
+        color: #000;
+        font-weight: bold;
+        font-size:15px;
+    }
+
+        .member-col a:hover
+        {
+            color: #d8450b;
+            text-decoration: none;
+        }
+
+    .member-col h5, .member-col strong
+    {
+        color: #f9f9f9;
+        text-shadow: none;
+    }
+
+    .member-col h5
+    {
+        margin-bottom: 25px;
+    }
+
+    .member-col ul
+    {
+        margin: 0px;
+    }
+
+        .member-col ul li
+        {
+            list-style: none;
+            padding-bottom: 20px;
+        }
+
+        .member-col ul.post-list li
+        {
+            border-bottom: 1px dashed #504f4f;
+            padding: 10px 0px;
+        }
 
 /**************************************
 / Footer
@@ -1618,4 +1682,13 @@ a.accordion-toggle
     vertical-align: middle;
     text-align: center;
     color: #000000;
+}
+/*Areaï¼šMember*/
+.memberindex-tab
+{
+    width:50%;
+}
+.memberindex-tab tr
+{
+    height:50px;
 }

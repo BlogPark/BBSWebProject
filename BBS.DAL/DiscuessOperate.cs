@@ -155,6 +155,34 @@ ORDER BY ClickCount DESC ";
             }
             return result;
         }
+        /// <summary>
+        /// 根据会员ID查找会员的话题
+        /// </summary>
+        /// <param name="memberid"></param>
+        /// <returns></returns>
+        public List<DiscussInfo> GetDiscussByMemberid(int memberid)
+        {
+            List<DiscussInfo> result = new List<DiscussInfo>();
+            string sqltxt = @"SELECT  Did ,
+        Title ,
+        Dcontent ,
+        ClickCount ,
+        Dstatus ,
+        CommentCount ,
+        IsTop ,
+        AddTime ,
+        UpdateTime ,
+        PUserID ,
+        PuserName
+FROM    qds157425440_db.dbo.DiscussInfo WITH ( NOLOCK )
+WHERE   PUserID = @id
+        AND Dstatus = 10";
+            using (SqlConnection conn = new SqlConnection(sqlconnectstr))
+            {
+                result = conn.Query<DiscussInfo>(sqltxt, new { id=memberid}).ToList<DiscussInfo>();
+            }
+            return result;
+        }
         #endregion
     }
 }

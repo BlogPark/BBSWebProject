@@ -1,16 +1,103 @@
 ﻿@{
     Layout = "~/Areas/Member/Views/Shared/_LayoutMember.cshtml";
 }
+@model BBS.Web2.Areas.Member.Models.MembermsgViewModel
 <div class="row">
     <!--Container row-->
     <!-- Page Sidebar
     ================================================== -->
     <div class="span3 sidebar page-left-sidebar">
-        @Html.Action("Leftside", "MemberCenter", new { area = "Member" });
-    </div><!-- End sidebar column -->
+        @Html.Action("Leftside", "MemberCenter", new { area = "Member" })
+    </div>
+    <!-- End sidebar column -->
     <!-- Page Content
     ================================================== -->
     <div class="span9">
-        
-    </div> <!--End page content column-->
-</div><!-- End container row -->
+        <h6 class="title-bg">个人信息</h6>
+        <br />
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+            <li><a href="#profile" data-toggle="tab">兴趣爱好</a></li>
+            @{
+                if (Model.member.IsBlogUser != 0)
+                {
+                <li><a href="#BlogPark" data-toggle="tab">我的文章</a></li>
+                }
+            }
+            <li><a href="#Discuss" data-toggle="tab">我的话题</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <table class="memberindex-tab">
+                    <tr>
+                        <td>会员名称：</td>
+                        <td>@Model.member.Name</td>
+                    </tr>
+                    <tr>
+                        <td>注册邮箱：</td>
+                        <td>@Model.member.Email</td>
+                    </tr>
+                    <tr>
+                        <td>性    别：</td>
+                        <td>@{string t = Model.member.Sex == 1 ? "男" : "女"; @Html.Raw(t);}</td>
+                    </tr>
+                    <tr>
+                        <td>出生日期：</td>
+                        <td>@Model.member.Birthday.ToString()</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane" id="profile">
+                <table class="memberindex-tab">
+                    <tr>
+                        <td>个人爱好：</td>
+                        <td>@Html.Raw(Model.member.Likes)</td>
+                    </tr>
+                    <tr>
+                        <td>个人描述：</td>
+                        <td>@Html.Raw(Model.member.Description)</td>
+                    </tr>
+                    <tr>
+                        <td>个人博客：</td>
+                        <td>@Url.Action("Index", "Blogs", new { area = "BlogPark" })</td>
+                    </tr>
+                    <tr>
+                        <td>个人标签：</td>
+                        <td>@Html.Raw(Model.member.Tags)</td>
+                    </tr>
+                    <tr>
+                        <td>话题个数：</td>
+                        <td>20</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane" id="BlogPark">
+                <div class="span9 member-col">
+                    <ul class="post-list">
+                        @{
+                            foreach (var item in Model.Blogs)
+                            {
+                            <li><a href="@Url.Action("BlogDetails", "Blogs", new { area = "BlogPark", id = item.BID })">@item.BTitleName</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-pane" id="Discuss">
+                <div class="span9 member-col">
+                    <ul class="post-list">
+                        @{
+                            foreach (var item in Model.Discusses)
+                            {
+                            <li><a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss", id = item.Did, pindex = 1 }).Replace("_1.html", ".html")">@item.Title</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End page content column-->
+</div>
+<!-- End container row -->

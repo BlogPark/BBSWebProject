@@ -30,10 +30,10 @@ namespace BBS.Model
 
         public string Email { get; set; }
         /// <summary>
-        /// Birthday
+        /// 生日
         /// </summary>
 
-        public string Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
         /// <summary>
         /// 密码
         /// </summary>

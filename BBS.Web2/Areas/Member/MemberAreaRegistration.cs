@@ -15,6 +15,11 @@ namespace BBS.Web2.Areas.Member
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
+               "member_index",
+               "User.html",
+               new { controller = "MemberCenter", action = "Index", id = UrlParameter.Optional }
+           );
+            context.MapRoute(
                 "Member_default",
                 "Member/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }

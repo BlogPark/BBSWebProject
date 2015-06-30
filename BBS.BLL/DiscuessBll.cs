@@ -53,6 +53,15 @@ namespace BBS.BLL
         {
             return dal.GetTopDiscuss();
         }
+         /// <summary>
+        /// 根据会员ID查找会员的话题
+        /// </summary>
+        /// <param name="memberid"></param>
+        /// <returns></returns>
+        public List<DiscussInfo> GetDiscussByMemberid(int memberid)
+        {
+            return dal.GetDiscussByMemberid(memberid);
+        }
         #endregion
     }
 }

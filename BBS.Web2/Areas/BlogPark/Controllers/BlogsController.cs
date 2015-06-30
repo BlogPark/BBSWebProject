@@ -31,5 +31,10 @@ namespace BBS.Web2.Areas.BlogPark.Controllers
         {
             RedirectToAction("Error", "Home", new { area = "" });
         }
+
+        public ActionResult BlogDetails(int id)
+        {
+            return View();
+        }
     }
 }

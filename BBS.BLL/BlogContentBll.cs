@@ -19,5 +19,16 @@ namespace BBS.BLL
         {
             return bdal.GetBlogMembers();
         }
+        #region  For Web2
+         /// <summary>
+        /// 得到某个会员的所有文章列表
+        /// </summary>
+        /// <param name="memberid"></param>
+        /// <returns></returns>
+        public List<BlogContentModel> GetBlogsByMemberid(int memberid)
+        {
+            return bdal.GetBlogsByMemberid(memberid);
+        }
+        #endregion
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web;
 using System.IO;
 using System.Collections;
-using dna.media.WebClass;
 
 
 /// <summary>
@@ -19,7 +18,7 @@ public class Uploader
     string filename = null;
     string originalName = null;
     HttpPostedFile uploadFile = null;
-    string webstr = AppConf.dna_picUrl+"media/";
+    string webstr = "s"+"media/";
     /**
   * 涓婁紶鏂囦欢鐨勪富澶勭悊鏂规硶
   * @param HttpContext
@@ -30,9 +29,9 @@ public class Uploader
   */
     public Hashtable upFile(HttpContext cxt, string pathbase, string[] filetype, int size)
     {
-        var account = AccountHelper.getInstance().LoginUser();
+        var account = 1;
         //pathbase = pathbase + DateTime.Now.ToString("yyyyMMdd")+ "/";//生成网站下的路径
-        pathbase = (pathbase + account.aYOKAId.ToString() + "/").TrimStart('/');//生成网站下的路径
+        pathbase = (pathbase + 1.ToString() + "/").TrimStart('/');//生成网站下的路径
         string upload_picture_path = System.Configuration.ConfigurationManager.AppSettings["UPLOAD_PICTURE_PATH"];//配置文件中配置的文件上传地址
         //uploadpath = cxt.Server.MapPath(pathbase);//鑾峰彇鏂囦欢涓婁紶璺緞//系统原来的存放文件位置
         uploadpath = (upload_picture_path + pathbase.Replace("/", "\\")).Replace("\\", @"\");//组装后的具体存放位置

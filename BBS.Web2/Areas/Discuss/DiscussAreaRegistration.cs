@@ -27,7 +27,7 @@ namespace BBS.Web2.Areas.Discuss
             context.MapRoute(
                "Dis_detail_p_index",
                "Dis/de{id}_{pindex}.html",
-               new { controller = "DiscussPart", action = "DiscuessDetail", pindex = 0, id = UrlParameter.Optional }
+               new { controller = "DiscussPart", action = "DiscuessDetail", pindex = 1, id = UrlParameter.Optional }
            );
             context.MapRoute(
                "Dis_detail_index",

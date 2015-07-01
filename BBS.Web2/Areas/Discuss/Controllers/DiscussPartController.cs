@@ -85,6 +85,23 @@ namespace BBS.Web2.Areas.Discuss.Controllers
                 return Json("0");
             }
         }
+        [HttpPost]
+        public ActionResult AddClick(int id = 0)
+        {
+            if (id == 0)
+            {
+                return Json("0");
+            }
+            int rowcount = dbll.UpdateDiscussClickCount(id);
+            if (rowcount > 0)
+            {
+                return Json("1");
+            }
+            else
+            {
+                return Json("0");
+            }
+        }
 
         protected override void OnException(ExceptionContext filterContext)
         {

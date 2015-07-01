@@ -9,7 +9,7 @@
     <!-- Page Sidebar
     ================================================== -->
     <div class="span3 sidebar page-sidebar">
-       @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" })
+        @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" })
     </div><!-- End sidebar column -->
     <!-- Page Content
     ================================================== -->
@@ -20,7 +20,7 @@
             foreach (var item in Model.toplist)
             {
                 <h5 class="title-bg">
-                    @k.ToString() &nbsp;&nbsp;&nbsp; <a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss",id=item.Did })" style="color:black;font-size:16px;">@item.Title</a>
+                    @k.ToString() &nbsp;&nbsp;&nbsp; <a onclick="addclick(@item.Did)"  href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss", id = item.Did, pindex = 1 }).Replace("_1.html", ".html")" style="color:black;font-size:16px;">@item.Title</a>
                     <small>>></small>
                     <button class="btn btn-mini btn-inverse hidden-phone" type="button" style="background-color:none"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></button>
                 </h5>
@@ -29,15 +29,29 @@
             foreach (var item in Model.dislist)
             {
                 <h5 class="title-bg">
-                    @k.ToString() &nbsp;&nbsp;&nbsp; <a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss",id=item.Did })" style="color:black;font-size:16px;">@item.Title</a>
+                    @k.ToString() &nbsp;&nbsp;&nbsp; <a onclick="addclick(@item.Did)" href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss", id = item.Did, pindex=1 }).Replace("_1.html", ".html")" style="color:black;font-size:16px;">@item.Title</a>
                     <small>>></small>
                     <button class="btn btn-mini btn-inverse hidden-phone" type="button" style="background-color:none"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></button>
-                   
+
                 </h5>
                 k++;
             }
         }
         <!-- Pagination -->
-        @Html.MyPage(Model.PageCurrent,Model.PageSize,Model.TotalCount)
+        @Html.MyPage(Model.PageCurrent, Model.PageSize, Model.TotalCount)
     </div> <!--End page content column-->
 </div><!-- End container row -->
+@section footScript{
+    <script type="text/javascript">
+        function addclick(id) {
+            $.ajax({
+                url: "@Url.Action("AddClick", "DiscussPart", new { area = "Discuss" })",
+                type: "POST",
+                data: { "id": id },
+                dataType: "Json",
+                success: function (data) {  
+                }
+            });
+        }
+    </script>
+}

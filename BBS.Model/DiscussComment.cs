@@ -60,6 +60,7 @@ namespace BBS.Model
         /// </summary>
         [DataMember]
         public DateTime AddTime { get; set; }
-
+        [DataMember]
+        public int RowIndex { get; set; }
     }
 }

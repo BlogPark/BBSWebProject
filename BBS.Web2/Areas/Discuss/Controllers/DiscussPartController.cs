@@ -51,7 +51,40 @@ namespace BBS.Web2.Areas.Discuss.Controllers
             model.TopLickDiscuss = dbll.GetTopDiscuess();
             return PartialView("_RunderPartial", model);
         }
-
+        [HttpPost]
+        public ActionResult Addsupport(int id=0)
+        {
+            if (id == 0)
+            {
+                return Json("0");
+            }
+            int rowcount = dbll.UpdateCommentSupput(id);
+            if (rowcount > 0)
+            {
+                return Json("1");
+            }
+            else
+            {
+                return Json("0");
+            }
+        }
+        [HttpPost]
+        public ActionResult AddAgainst(int id = 0)
+        {
+            if (id == 0)
+            {
+                return Json("0");
+            }
+            int rowcount = dbll.UpdateCommentAgainstCount(id);
+            if (rowcount > 0)
+            {
+                return Json("1");
+            }
+            else
+            {
+                return Json("0");
+            }
+        }
 
         protected override void OnException(ExceptionContext filterContext)
         {

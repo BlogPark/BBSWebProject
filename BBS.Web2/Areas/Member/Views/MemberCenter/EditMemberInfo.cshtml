@@ -1,0 +1,57 @@
+﻿@{
+    Layout = "~/Areas/Member/Views/Shared/_LayoutMember.cshtml";
+}
+@model BBS.Web2.Areas.Member.Models.MemberInfoViewModel
+<div class="row">
+    <!--Container row-->
+    <!-- Page Sidebar
+    ================================================== -->
+    <div class="span3 sidebar page-left-sidebar">
+        @Html.Action("Leftside", "MemberCenter", new { area = "Member" })
+    </div>
+    <!-- End sidebar column -->
+    <!-- Page Content
+    ================================================== -->
+    <div class="span9">
+        <h6 class="title-bg">个人信息更新</h6>
+        <br />
+        @using (Html.BeginForm("", "", FormMethod.Post, new { @id="memform"}))
+        {
+            <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+            <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+            <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+            <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+            <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+            <div class="member-input-prepend">
+            <lable>讨论主题：</lable>
+            <input type="text" class="span5" id="title" name="title" size="26" placeholder="话题标题" />
+        </div>
+        <br />
+            <div class="row">
+            <div class="span4" style="text-align: center;">
+                <input type="button" class="btn btn-inverse" value="发起讨论" id="subform">
+            </div>
+        </div>
+        }
+    </div>
+</div>

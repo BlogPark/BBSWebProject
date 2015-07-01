@@ -5,19 +5,19 @@
 <div class="row">
     <div class="span9 blog">
         <section class="comments">
-            <h4 class="title-bg"><a name="comments"></a>讨论>主题</h4>
+            <h3 class="title-bg">主题：@Model.Info.Title</h3>
             <ul>
                 @{
                     string picurl = string.IsNullOrWhiteSpace(Model.MemberInfo.HeadPic) ? "http://www.kaifanews.com/img/user-avatar1.jpg" : Model.MemberInfo.HeadPic;
                     <li>
-                        <div style="float:left">
-                            <img style="height: 96px; width:96px;" src="@picurl" alt="评论" />
+                        <div style="float: left">
+                            <img style="height: 50px; width:50px;" src="@picurl" alt="评论" />
                         </div>
-                        <div style="height: 96px; width:auto;float: left;">
-                            <h3>@Model.Info.Title</h3>
+                        <div style="height: 50px; width: auto; float: left;">
+                            @*<h3>@Model.Info.Title</h3>*@
                             <span class="comment-name">@Model.Info.PUserName</span>
-                            <span class="comment-date">@Model.Info.AddTime.ToString("yyyy-MM-dd HH:mm:ss") &nbsp;&nbsp; <i class="icon-hand-up"></i><a href="#">查看(@Model.Info.ClickCount.ToString())</a>&nbsp; |&nbsp;<i class=" icon-comment"></i><a href="#">评论(@Model.Info.CommentCount.ToString())</a></span>
-                            <hr style="border-color:#8e8787" />
+                            <span class="comment-date">@Model.Info.AddTime.ToString("yyyy-MM-dd HH:mm:ss") &nbsp;&nbsp; <i class="icon-hand-up"></i><a >查看(@Model.Info.ClickCount.ToString())</a>&nbsp; |&nbsp;<i class=" icon-comment"></i><a >评论(@Model.Info.CommentCount.ToString())</a></span>
+                            <hr style="border-color: #8e8787" />
                         </div>
                         <div class="comment-content">@Model.Info.Dcontent</div>
                         <!-- Reply -->
@@ -41,16 +41,17 @@
                     foreach (var item in Model.Comments)
                     {
                         string pic = string.IsNullOrWhiteSpace(item.MemberPic) ? "http://www.kaifanews.com/img/user-avatar1.jpg" : item.MemberPic;
-                        <li>
-                            <img src="@pic" style="width:50px;height:50px;" alt="Image" />
-                            <span class="comment-name">@item.UserName</span>
-                            <span class="comment-date">@item.AddTime.ToString("yyyy-MM-dd HH:mm") &nbsp;&nbsp; <i class=" icon-thumbs-up"></i><a href="#">赞(@item.SupportCount.ToString())</a>&nbsp;|<i class="icon-thumbs-down"></i><a href="#">吐(@item.AgainstCount.ToString())</a></span>
-                            <div class="comment-content">@item.CContent</div>
-                        </li>
+                    <li>
+                        <img src="@pic" style="width:50px;height:50px;" alt="Image" />
+                        <span class="comment-name">@item.UserName</span>
+                        <span class="comment-date">&nbsp；@item.AddTime.ToString("yyyy-MM-dd HH:mm") &nbsp;&nbsp; <i class=" icon-thumbs-up"></i><a href="javascript:addsupport(@item.Cid)" >赞(<lable id="su_@item.Cid">@item.SupportCount.ToString()</lable>)</a>&nbsp;|<i class="icon-thumbs-down"></i><a href="javascript:addagainst(@item.Cid)" >吐(<lable id="au_@item.Cid">@item.AgainstCount.ToString()</lable>)</a></span>
+                        <div class="comment-content">@item.CContent</div>
+                    </li>
                     }
                 }
             </ul>
-        </section><!-- Close comments section-->
+        </section>
+        <!-- Close comments section-->
         <div class="pagination">
             <ul>
                 <li class="active"><a href="#">Prev</a></li>
@@ -87,6 +88,43 @@
 
     </div>
     <div class="span3 sidebar">
-       @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" });
+        @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" })
     </div>
 </div>
+@section footScript{
+    <script type="text/javascript">
+        function addsupport(id) {
+            $.ajax({
+                url: "@Url.Action("Addsupport", "DiscussPart", new { area="Discuss"})",
+                type: "POST",
+                data: { "id": id },
+                dataType: "Json",
+                success: function (data) {
+                    if (data == "1")
+                    {
+                        var item = "#su_" + id;
+                        var count = $(item).html();
+                        count = count*1 + 1;
+                        $(item).html(count);
+                    }
+                }
+            });
+        }
+        function addagainst(id) {
+            $.ajax({
+                url: "@Url.Action("AddAgainst", "DiscussPart", new { area="Discuss"})",
+                type: "POST",
+                data: { "id": id },
+                dataType: "Json",
+                success: function (data) {
+                    if (data == "1") {
+                        var item = "#au_" + id;
+                        var count = $(item).html();
+                        count = count * 1 + 1;
+                        $(item).html(count);
+                    }
+                }
+            });
+        }
+    </script>
+}

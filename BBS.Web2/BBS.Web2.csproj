@@ -131,6 +131,7 @@
     <Compile Include="Areas\Member\Controllers\MemberCenterController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Areas\Member\Models\LeftsidePartModel.cs" />
+    <Compile Include="Areas\Member\Models\MemberInfoViewModel.cs" />
     <Compile Include="Areas\Member\Models\MembermsgViewModel.cs" />
     <Compile Include="Areas\News\Controllers\NewsPartController.cs" />
     <Compile Include="Areas\News\Models\CatePageViewModel.cs" />
@@ -531,6 +532,7 @@
     <Content Include="Areas\Member\Views\MemberCenter\Index.cshtml" />
     <Content Include="Areas\Member\Views\Shared\_memleftpartial.cshtml" />
     <Content Include="Areas\Member\Views\MemberCenter\PublishDiscuss.cshtml" />
+    <Content Include="Areas\Member\Views\MemberCenter\EditMemberInfo.cshtml" />
     <None Include="Properties\PublishProfiles\newweb2.pubxml" />
     <None Include="Properties\PublishProfiles\web2.pubxml" />
     <Content Include="Views\Home\About.cshtml" />

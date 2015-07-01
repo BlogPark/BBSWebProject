@@ -9,7 +9,7 @@
     <!-- Page Sidebar
     ================================================== -->
     <div class="span3 sidebar page-sidebar">
-       @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" });
+       @Html.Action("PartialData", "DiscussPart", new { area = "Discuss" })
     </div><!-- End sidebar column -->
     <!-- Page Content
     ================================================== -->
@@ -32,7 +32,7 @@
                     @k.ToString() &nbsp;&nbsp;&nbsp; <a href="@Url.Action("DiscuessDetail", "DiscussPart", new { area = "Discuss",id=item.Did })" style="color:black;font-size:16px;">@item.Title</a>
                     <small>>></small>
                     <button class="btn btn-mini btn-inverse hidden-phone" type="button" style="background-color:none"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></button>
-                    <label class="bgtpanel"><b>@item.CommentCount.ToString() &nbsp;&nbsp; / &nbsp;&nbsp; @item.ClickCount.ToString()</b></label>
+                   
                 </h5>
                 k++;
             }

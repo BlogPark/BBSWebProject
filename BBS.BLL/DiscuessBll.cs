@@ -62,6 +62,60 @@ namespace BBS.BLL
         {
             return dal.GetDiscussByMemberid(memberid);
         }
+        /// <summary>
+        /// 发表讨论话题
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int AddDiscuss(DiscussInfo model)
+        {
+            return dal.AddDiscuss(model);
+        }
+          /// <summary>
+        /// 添加用户评论
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int AddDiscussComment(DiscussComment model)
+        {
+            return dal.AddDiscussComment(model);
+        }
+         /// <summary>
+        /// 增加话题评论的支持数
+        /// </summary>
+        /// <param name="commentid"></param>
+        /// <returns></returns>
+        public int UpdateCommentSupput(int commentid)
+        {
+            return dal.UpdateCommentSupput(commentid);
+        }
+        /// <summary>
+        /// 增加话题评论的反对数
+        /// </summary>
+        /// <param name="commentid"></param>
+        /// <returns></returns>
+        public int UpdateCommentAgainstCount(int commentid)
+        {
+            return dal.UpdateCommentAgainstCount(commentid);
+        }
+        /// <summary>
+        /// 增加话题的点击数量
+        /// </summary>
+        /// <param name="did"></param>
+        /// <returns></returns>
+        public int UpdateDiscussClickCount(int did)
+        {
+            return dal.UpdateDiscussClickCount(did);
+        }
+        /// <summary>
+        /// 增加话题的评论数量
+        /// </summary>
+        /// <param name="did"></param>
+        /// <returns></returns>
+        public int UpdateDiscussCommentCount(int did)
+        {
+            return dal.UpdateDiscussCommentCount(did);
+        }
         #endregion
     }
 }

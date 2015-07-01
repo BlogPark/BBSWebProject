@@ -35,8 +35,7 @@
         $("#subform").click(function () {
             var title = $("#title").val();
             var content = $("#textcontent").val();
-            if (title == "")
-            {
+            if (title == "") {
                 alert("必须输入话题标题！");
                 return;
             }
@@ -45,15 +44,20 @@
                 return;
             }
             $.ajax({
-                url: "@Url.Action("PublishDiscuss", "MemberCenter", new { area="Member"})",
+                url: "@Url.Action("PublishDiscuss", "MemberCenter", new { area = "Member" })",
                 data: { "title": title, "content": content },
                 type: "POST",
                 dataType: "Json",
                 success: function (data) {
-                  
-                 
-                        alert(data);
-                    
+                    if (data == "1") {
+                        window.open("@Url.Action("Index", "DiscussPart", new { area = "Discuss" })", "_self");//跳转到话题首页
+                    }
+                    if (data == "0") {
+                        alert("发表内容失败，请重试");
+                    }
+                    if (data == "-2") {
+                        window.open("@Url.Action("Login", "Home", new { area = "" })", "_self");
+                    }
                 }
             });
         });

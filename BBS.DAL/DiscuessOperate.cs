@@ -95,7 +95,7 @@ WHERE   did = @id
         AND Dstatus = 10";
             using (SqlConnection conn = new SqlConnection(sqlconnectstr))
             {
-                info = conn.Query<DiscussInfo>(sqltxt, new { id=ID}).ToList<DiscussInfo>().FirstOrDefault();
+                info = conn.Query<DiscussInfo>(sqltxt, new { id = ID }).ToList<DiscussInfo>().FirstOrDefault();
             }
             return info;
         }
@@ -179,9 +179,143 @@ WHERE   PUserID = @id
         AND Dstatus = 10";
             using (SqlConnection conn = new SqlConnection(sqlconnectstr))
             {
-                result = conn.Query<DiscussInfo>(sqltxt, new { id=memberid}).ToList<DiscussInfo>();
+                result = conn.Query<DiscussInfo>(sqltxt, new { id = memberid }).ToList<DiscussInfo>();
             }
             return result;
+        }
+        /// <summary>
+        /// 发表讨论话题
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int AddDiscuss(DiscussInfo model)
+        {
+            string sqltxt = @"INSERT  INTO qds157425440_db.dbo.DiscussInfo
+        ( Title ,
+          Dcontent ,
+          ClickCount ,
+          Dstatus ,
+          CommentCount ,
+          IsTop ,
+          AddTime ,
+          UpdateTime ,
+          PUserID ,
+          PuserName
+        )
+VALUES  ( @Title ,
+          @Dcontent ,
+          0 ,
+          10 ,
+          0 ,
+          0 ,
+          GETDATE() ,
+          GETDATE() ,
+          @PUserID ,
+          @PuserName 
+        )";
+            SqlParameter[] paramter = { 
+                                          new SqlParameter("@Title",model.Title),
+                                          new SqlParameter("@Dcontent",model.Dcontent),
+                                          new SqlParameter("@PUserID",model.PUserID),
+                                          new SqlParameter("@PuserName",model.PUserName)
+                                      };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
+        }
+        /// <summary>
+        /// 添加用户评论
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int AddDiscussComment(DiscussComment model)
+        {
+            string sqltxt = @"INSERT  INTO qds157425440_db.dbo.DiscussComment
+        ( UserName ,
+          CContent ,
+          SupportCount ,
+          AgainstCount ,
+          Cstatus ,
+          UserID ,
+          Did ,
+          AddTime
+        )
+VALUES  ( @UserName ,
+          @CContent ,
+          0 ,
+          0 ,
+          1 ,
+          @UserID ,
+          @Did ,
+          GETDATE()
+        )";
+            SqlParameter[] paramter = { 
+                                          new SqlParameter("@UserName",model.UserName),
+                                          new SqlParameter("@CContent",model.CContent),
+                                          new SqlParameter("@UserID",model.UserID),
+                                          new SqlParameter("@Did ",model.Did)
+                                      };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            if (rowcount > 0)
+            {
+                UpdateDiscussCommentCount(model.Did);//增加评论数
+            }
+            return rowcount;
+        }
+        /// <summary>
+        /// 增加话题评论的支持数
+        /// </summary>
+        /// <param name="commentid"></param>
+        /// <returns></returns>
+        public int UpdateCommentSupput(int commentid)
+        {
+            string sqltxt = @"UPDATE  qds157425440_db.dbo.DiscussComment
+SET     SupportCount = SupportCount + 1
+WHERE   Cid = @id";
+            SqlParameter[] paramter = { new SqlParameter("@id", commentid) };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
+        }
+        /// <summary>
+        /// 增加话题评论的反对数
+        /// </summary>
+        /// <param name="commentid"></param>
+        /// <returns></returns>
+        public int UpdateCommentAgainstCount(int commentid)
+        {
+            string sqltxt = @"UPDATE  qds157425440_db.dbo.DiscussComment
+SET     AgainstCount = AgainstCount + 1
+WHERE   Cid = @id";
+            SqlParameter[] paramter = { new SqlParameter("@id", commentid) };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
+        }
+        /// <summary>
+        /// 增加话题的点击数量
+        /// </summary>
+        /// <param name="did"></param>
+        /// <returns></returns>
+        public int UpdateDiscussClickCount(int did)
+        {
+            string sqltxt = @"UPDATE  qds157425440_db.dbo.DiscussInfo
+SET     ClickCount = ClickCount + 1
+WHERE   Did = @id";
+            SqlParameter[] paramter = { new SqlParameter("@id", did) };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
+        }
+        /// <summary>
+        /// 增加话题的评论数量
+        /// </summary>
+        /// <param name="did"></param>
+        /// <returns></returns>
+        public int UpdateDiscussCommentCount(int did)
+        {
+            string sqltxt = @"UPDATE  qds157425440_db.dbo.DiscussInfo
+SET     CommentCount = CommentCount + 1
+WHERE   Did = @id";
+            SqlParameter[] paramter = { new SqlParameter("@id", did) };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
         }
         #endregion
     }

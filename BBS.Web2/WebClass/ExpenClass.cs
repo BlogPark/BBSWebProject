@@ -25,7 +25,7 @@ namespace System.Web.Mvc
             Match mc = re1.Match(redirectTo);
             if (string.IsNullOrWhiteSpace(mc.Value))
             {
-                redirectTo = redirectTo.Replace(".html","_1.html");
+                redirectTo = redirectTo.Replace(".html", "_1.html");
             }
             pageSize = pageSize == 0 ? 3 : pageSize;
             var totalPages = Math.Max((totalCount + pageSize - 1) / pageSize, 1); //总页数
@@ -49,9 +49,9 @@ namespace System.Web.Mvc
                     {
                         if (currint == i)
                         {//当前页处理                     
-                            string str = "_"+currentPage.ToString() + ".html";
-                            Regex re = new Regex("_[0-9]{1,16}.html",RegexOptions.IgnoreCase);
-                            string url = re.Replace(redirectTo,str);
+                            string str = "_" + currentPage.ToString() + ".html";
+                            Regex re = new Regex("_[0-9]{1,16}.html", RegexOptions.IgnoreCase);
+                            string url = re.Replace(redirectTo, str);
                             output.AppendFormat("<li class='active'><a >{0}</a></li> ", currentPage);
                         }
                         else
@@ -78,7 +78,13 @@ namespace System.Web.Mvc
                 //    output.AppendFormat("<a class='pageLink' href='{0}?pageIndex={1}&pageSize={2}'>末页</a> ", redirectTo, totalPages, pageSize);
                 //}
                 output.Append(" ");
-                output.Append("</ul></div>");            
+                output.Append("</ul></div>");
+            }
+            else
+            {
+                output.AppendFormat("<li class='active'><a >{0}</a></li> ", 1);
+                output.Append(" ");
+                output.Append("</ul></div>");
             }
             //output.AppendFormat("<label>第{0}页 / 共{1}页</label>", currentPage, totalPages);//这个统计加不加都行
             return new HtmlString(output.ToString());

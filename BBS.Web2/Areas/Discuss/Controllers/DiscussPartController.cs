@@ -21,13 +21,22 @@ namespace BBS.Web2.Areas.Discuss.Controllers
         /// </summary>
         /// <param name="pageindex"></param>
         /// <returns></returns>
-        public ActionResult Index(int pageindex=1)
+        public ActionResult Index(int pageindex = 1)
         {
             DiscuessIndexViewModel model = new DiscuessIndexViewModel();
-            model.dislist = dbll.GetDiscuessesForIndex(pageindex,PageSize);
             model.toplist = dbll.GetTopDiscuess();
+            model.dislist = dbll.GetDiscuessesForIndex(pageindex, PageSize);
+            int total = 0;
+            if (model.dislist.Count > 0)
+            {
+                total = model.toplist.Count + model.dislist[0].rowco;
+            }
+            else
+            {
+                total = model.toplist.Count;
+            }
             model.PageCurrent = pageindex;
-            model.TotalCount = 100;
+            model.TotalCount = total;
             model.PageSize = PageSize;
             return View(model);
         }
@@ -36,12 +45,15 @@ namespace BBS.Web2.Areas.Discuss.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult DiscuessDetail(int id,int pindex=1)
+        public ActionResult DiscuessDetail(int id, int pindex = 1)
         {
             DiscussDetailViewModel model = new DiscussDetailViewModel();
             model.Info = dbll.GetDiscuessByID(id);
-            model.Comments = dbll.GetDiscussCommentByID(id);
+            model.Comments = dbll.GetDiscussCommentByID(id, pindex, PageSize);
             model.MemberInfo = mbll.GetMemberInfoByID(model.Info.PUserID);
+            model.PageCurrent = pindex;
+            model.TotalCount = model.Comments.Count > 0 ? model.Comments[0].rowco : 0;
+            model.PageSize = PageSize;
             return View(model);
         }
 
@@ -52,7 +64,7 @@ namespace BBS.Web2.Areas.Discuss.Controllers
             return PartialView("_RunderPartial", model);
         }
         [HttpPost]
-        public ActionResult Addsupport(int id=0)
+        public ActionResult Addsupport(int id = 0)
         {
             if (id == 0)
             {
@@ -101,6 +113,32 @@ namespace BBS.Web2.Areas.Discuss.Controllers
             {
                 return Json("0");
             }
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(string content, int did)
+        {
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                return Json("0");
+            }
+            MemberInfo info = (MemberInfo)Session["member"];
+            if (info == null)
+            {
+                return Json("-2");
+            }
+            DiscussComment model = new DiscussComment();
+            model.UserID = info.MID;
+            model.UserName = info.Name;
+            model.CContent = content;
+            model.Did = did;
+            int result = dbll.AddDiscussComment(model);
+            if (result > 0)
+            {
+                return Json("1");
+            }
+            else
+                return Json("0");
         }
 
         protected override void OnException(ExceptionContext filterContext)

@@ -41,9 +41,9 @@ namespace BBS.BLL
         /// </summary>
         /// <param name="did"></param>
         /// <returns></returns>
-        public List<DiscussComment> GetDiscussCommentByID(int did)
+        public List<DiscussComment> GetDiscussCommentByID(int did, int pageindex, int pagesize)
         {
-            return dal.GetDiscussCommentByID(did);
+            return dal.GetDiscussCommentByID(did,pageindex,pagesize);
         }
          /// <summary>
         /// 查询点击率较高的15条记录

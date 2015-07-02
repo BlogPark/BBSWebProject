@@ -64,6 +64,15 @@ namespace BBS.Model
         /// </summary>
         [DataMember]
         public string PUserName { get; set; }
-
+        /// <summary>
+        /// 记录总数
+        /// </summary>
+        [DataMember]
+        public int rowco { get; set; }
+        /// <summary>
+        /// 索引顺序
+        /// </summary>
+        [DataMember]
+        public int rowid { get; set; }
     }
 }

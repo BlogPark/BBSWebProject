@@ -28,22 +28,33 @@ namespace BBS.DAL
             using (SqlConnection conn = new SqlConnection(sqlconnectstr))
             {
                 conn.Open();
-                string sqltxt = @"SELECT  *
-FROM    ( SELECT    ROW_NUMBER() OVER ( ORDER BY UpdateTime DESC ) AS rowid ,
-                    Did ,
-                    Title ,
-                    Dcontent ,
-                    ClickCount ,
-                    Dstatus ,
-                    CommentCount ,
-                    IsTop ,
-                    AddTime ,
-                    UpdateTime
-          FROM      qds157425440_db.dbo.DiscussInfo WITH ( NOLOCK )
-          WHERE     Dstatus = 10 AND ISNULL(IsTop,0)=0
-        ) AS A
-WHERE   rowid > ( @index - 1 ) * @pagesize
-        AND rowid <= @index * @pagesize";
+                string sqltxt = @"SELECT  IDENTITY( INT,1,1 ) AS rowid ,
+        Did * 1 AS Did
+INTO    #t
+FROM    qds157425440_db.dbo.DiscussInfo WITH ( NOLOCK )
+WHERE   Dstatus = 10
+        AND ISNULL(IsTop, 0) = 0
+ORDER BY UpdateTime DESC
+DECLARE @rowcount INT
+SET @rowcount = @@ROWCOUNT
+SELECT  @rowcount AS rowco ,
+        C.rowid ,
+        A.Did ,
+        Title ,
+        Dcontent ,
+        ClickCount ,
+        Dstatus ,
+        CommentCount ,
+        IsTop ,
+        AddTime ,
+        UpdateTime
+FROM    #t C
+        INNER JOIN qds157425440_db.dbo.DiscussInfo A WITH ( NOLOCK ) ON A.Did = C.Did
+                                                              AND C.rowid > ( @index
+                                                              - 1 )
+                                                              * @pagesize
+                                                              AND C.rowid <= @index
+                                                              * @pagesize";
                 result = conn.Query<DiscussInfo>(sqltxt, new { index = pageindex, pagesize = pagesize }).ToList<DiscussInfo>();
             }
             return result;
@@ -104,26 +115,41 @@ WHERE   did = @id
         /// </summary>
         /// <param name="did"></param>
         /// <returns></returns>
-        public List<DiscussComment> GetDiscussCommentByID(int did)
+        public List<DiscussComment> GetDiscussCommentByID(int did, int pageindex, int pagesize)
         {
             List<DiscussComment> list = new List<DiscussComment>();
-            string sqltxt = @"SELECT  A.Cid ,
+            string sqltxt = @"SELECT  IDENTITY( INT,1,1 ) AS rowid ,
+        Cid * 1 AS Cid
+INTO    #t
+FROM    qds157425440_db.dbo.DiscussComment WITH ( NOLOCK )
+WHERE   Did = @id
+        AND Cstatus = 1 ORDER BY Cid asc
+DECLARE @rowcount INT
+SET @rowcount = @@ROWCOUNT
+SELECT  @rowcount AS rowco ,
+        C.rowid,
+        A.Cid ,
         A.UserName ,
         A.CContent ,
         A.SupportCount ,
         A.AgainstCount ,
         A.Cstatus ,
         A.UserID ,
-        A.Did,
-        b.HeadPic,
+        A.Did ,
+        b.HeadPic ,
         A.AddTime
-FROM    qds157425440_db.dbo.DiscussComment A WITH ( NOLOCK )
+FROM    #t C
+        INNER JOIN qds157425440_db.dbo.DiscussComment A WITH ( NOLOCK ) ON A.Cid = C.Cid
+                                                              AND C.rowid > ( @index
+                                                              - 1 )
+                                                              * @pagesize
+                                                              AND C.rowid <= @index
+                                                              * @pagesize
         LEFT JOIN qds157425440_db.dbo.MemberInfo B WITH ( NOLOCK ) ON A.UserID = B.mid
-WHERE   Did = @id
-        AND Cstatus = 1";
+  ";
             using (SqlConnection conn = new SqlConnection(sqlconnectstr))
             {
-                list = conn.Query<DiscussComment>(sqltxt, new { id = did }).ToList<DiscussComment>();
+                list = conn.Query<DiscussComment>(sqltxt, new { id = did, index = pageindex, pagesize = pagesize }).ToList<DiscussComment>();
             }
             return list;
         }

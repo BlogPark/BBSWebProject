@@ -44,7 +44,7 @@ namespace BBS.Model
         /// 用户ID
         /// </summary>
         [DataMember]
-        public string UserID { get; set; }
+        public int UserID { get; set; }
         /// <summary>
         /// 讨论组ID
         /// </summary>
@@ -60,7 +60,20 @@ namespace BBS.Model
         /// </summary>
         [DataMember]
         public DateTime AddTime { get; set; }
+        /// <summary>
+        /// 页索引
+        /// </summary>
         [DataMember]
         public int RowIndex { get; set; }
+        /// <summary>
+        /// 总记录数
+        /// </summary>
+        [DataMember]
+        public int rowco { get; set; }
+        /// <summary>
+        /// 索引顺序
+        /// </summary>
+        [DataMember]
+        public int rowid { get; set; }
     }
 }

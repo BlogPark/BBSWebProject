@@ -6,6 +6,7 @@
     <div class="span9 blog">
         <section class="comments">
             <h3 class="title-bg">主题：@Model.Info.Title</h3>
+            <input type="hidden" value="@Model.Info.Did" id="disid">
             <ul>
                 @{
                     string picurl = string.IsNullOrWhiteSpace(Model.MemberInfo.HeadPic) ? "http://www.kaifanews.com/img/user-avatar1.jpg" : Model.MemberInfo.HeadPic;
@@ -15,8 +16,8 @@
                         </div>
                         <div style="height: 50px; width: auto; float: left;">
                             @*<h3>@Model.Info.Title</h3>*@
-                            <span class="comment-name">@Model.Info.PUserName</span>
-                            <span class="comment-date">@Model.Info.AddTime.ToString("yyyy-MM-dd HH:mm:ss") &nbsp;&nbsp; <i class="icon-hand-up"></i><a >查看(@Model.Info.ClickCount.ToString())</a>&nbsp; |&nbsp;<i class=" icon-comment"></i><a >评论(@Model.Info.CommentCount.ToString())</a></span>
+                            <span class="comment-name">楼主：@Model.Info.PUserName</span>
+                            <span class="comment-date">@Model.Info.AddTime.ToString("yyyy-MM-dd HH:mm:ss") &nbsp;&nbsp; <i class="icon-hand-up"></i><a>查看(@Model.Info.ClickCount.ToString())</a>&nbsp; |&nbsp;<i class=" icon-comment"></i><a>评论(@Model.Info.CommentCount.ToString())</a></span>
                             <hr style="border-color: #8e8787" />
                         </div>
                         <div class="comment-content">@Model.Info.Dcontent</div>
@@ -43,7 +44,7 @@
                         string pic = string.IsNullOrWhiteSpace(item.MemberPic) ? "http://www.kaifanews.com/img/user-avatar1.jpg" : item.MemberPic;
                     <li>
                         <img src="@pic" style="width:50px;height:50px;" alt="Image" />
-                        <span class="comment-name">@item.UserName</span>
+                        <span class="comment-name">@item.rowid 楼：@item.UserName</span>
                         <span class="comment-date">&nbsp；@item.AddTime.ToString("yyyy-MM-dd HH:mm") &nbsp;&nbsp; <i class=" icon-thumbs-up"></i><a href="javascript:addsupport(@item.Cid)" >赞(<lable id="su_@item.Cid">@item.SupportCount.ToString()</lable>)</a>&nbsp;|<i class="icon-thumbs-down"></i><a href="javascript:addagainst(@item.Cid)" >吐(<lable id="au_@item.Cid">@item.AgainstCount.ToString()</lable>)</a></span>
                         <div class="comment-content">@item.CContent</div>
                     </li>
@@ -52,38 +53,16 @@
             </ul>
         </section>
         <!-- Close comments section-->
-        <div class="pagination">
-            <ul>
-                <li class="active"><a href="#">Prev</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
-        </div>
+        @Html.MyPage(Model.PageCurrent, Model.PageSize, Model.TotalCount)           
+       
         <!-- Comment Form -->
         <div class="comment-form-container">
-            <form action="#" id="comment-form">
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-user"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
+            <textarea class="span6" rows="3" id="content"></textarea>
+            <div class="row">
+                <div class="span2">
+                    <input type="button" class="btn btn-inverse" value="评  论" id="subcom" onclick="subcomf()">
                 </div>
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-envelope"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
-                </div>
-                <div class="input-prepend">
-                    <span class="add-on"><i class="icon-globe"></i></span>
-                    <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
-                </div>
-                <textarea class="span6"></textarea>
-                <div class="row">
-                    <div class="span2">
-                        <input type="submit" class="btn btn-inverse" value="提  交">
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
 
     </div>
@@ -93,18 +72,38 @@
 </div>
 @section footScript{
     <script type="text/javascript">
+        function subcomf() {
+            var conte = $("#content").val();
+            if (conte == "")
+                return;
+            var did = $("#disid").val();
+            $.ajax({
+                url: "@Url.Action("AddComment", "DiscussPart", new { area = "Discuss" })",
+                type: "POST",
+                data: { "content": conte, "did": did },
+                datatype: "json",
+                success: function (data) {
+                    if (data == "-2") {
+                        window.open("@Url.Action("Login", "Home", new { area = "" })", "_self");
+                    }
+                    if (data == "1") {
+                        $("#content").val();
+                        location.reload();
+                    }
+                }
+            });
+        }
         function addsupport(id) {
             $.ajax({
-                url: "@Url.Action("Addsupport", "DiscussPart", new { area="Discuss"})",
+                url: "@Url.Action("Addsupport", "DiscussPart", new { area = "Discuss" })",
                 type: "POST",
                 data: { "id": id },
                 dataType: "Json",
                 success: function (data) {
-                    if (data == "1")
-                    {
+                    if (data == "1") {
                         var item = "#su_" + id;
                         var count = $(item).html();
-                        count = count*1 + 1;
+                        count = count * 1 + 1;
                         $(item).html(count);
                     }
                 }
@@ -112,7 +111,7 @@
         }
         function addagainst(id) {
             $.ajax({
-                url: "@Url.Action("AddAgainst", "DiscussPart", new { area="Discuss"})",
+                url: "@Url.Action("AddAgainst", "DiscussPart", new { area = "Discuss" })",
                 type: "POST",
                 data: { "id": id },
                 dataType: "Json",

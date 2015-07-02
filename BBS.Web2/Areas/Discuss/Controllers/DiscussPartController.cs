@@ -15,6 +15,7 @@ namespace BBS.Web2.Areas.Discuss.Controllers
         // GET: /Discuss/DiscussPart/
         private DiscuessBll dbll = new DiscuessBll();
         MemberOperaterBll mbll = new MemberOperaterBll();
+        private SeoInfroBll sbll = new SeoInfroBll();
         public readonly int PageSize = 30;
         /// <summary>
         /// 讨论首页
@@ -23,6 +24,10 @@ namespace BBS.Web2.Areas.Discuss.Controllers
         /// <returns></returns>
         public ActionResult Index(int pageindex = 1)
         {
+            SeoInfoModel seoinfo = sbll.Getseoinfo("话题首页");
+            ViewBag.Title = seoinfo.PTitle;
+            ViewBag.KeyWord = seoinfo.KeyWord;
+            ViewBag.Description = seoinfo.PDescription;
             DiscuessIndexViewModel model = new DiscuessIndexViewModel();
             model.toplist = dbll.GetTopDiscuess();
             model.dislist = dbll.GetDiscuessesForIndex(pageindex, PageSize);
@@ -54,6 +59,9 @@ namespace BBS.Web2.Areas.Discuss.Controllers
             model.PageCurrent = pindex;
             model.TotalCount = model.Comments.Count > 0 ? model.Comments[0].rowco : 0;
             model.PageSize = PageSize;
+            ViewBag.Title = model.Info.Title;
+            ViewBag.KeyWord = model.Info.Title;
+            ViewBag.Description = "欢迎大家畅所欲言，积极讨论，不管是生活的还是工作的还是娱乐的";
             return View(model);
         }
 

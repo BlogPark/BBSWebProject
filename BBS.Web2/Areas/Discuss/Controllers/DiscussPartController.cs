@@ -64,13 +64,21 @@ namespace BBS.Web2.Areas.Discuss.Controllers
             ViewBag.Description = "欢迎大家畅所欲言，积极讨论，不管是生活的还是工作的还是娱乐的";
             return View(model);
         }
-
+        /// <summary>
+        /// 分部视图内容
+        /// </summary>
+        /// <returns></returns>
         public ActionResult PartialData()
         {
             PartialViewModel model = new PartialViewModel();
             model.TopLickDiscuss = dbll.GetTopDiscuess();
             return PartialView("_RunderPartial", model);
         }
+        /// <summary>
+        /// 增加支持数
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Addsupport(int id = 0)
         {
@@ -88,6 +96,11 @@ namespace BBS.Web2.Areas.Discuss.Controllers
                 return Json("0");
             }
         }
+        /// <summary>
+        /// 增加反对数
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddAgainst(int id = 0)
         {
@@ -105,6 +118,11 @@ namespace BBS.Web2.Areas.Discuss.Controllers
                 return Json("0");
             }
         }
+        /// <summary>
+        /// 增加点击次数
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddClick(int id = 0)
         {
@@ -122,7 +140,12 @@ namespace BBS.Web2.Areas.Discuss.Controllers
                 return Json("0");
             }
         }
-
+        /// <summary>
+        /// 增加评论
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="did"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddComment(string content, int did)
         {

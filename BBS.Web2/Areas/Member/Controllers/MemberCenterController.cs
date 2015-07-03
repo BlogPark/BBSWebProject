@@ -88,6 +88,15 @@ namespace BBS.Web2.Areas.Member.Controllers
         /// <returns></returns>
         public ActionResult EditMemberInfo()
         {
+            MemberInfo member = (MemberInfo)Session["member"];
+            MemberInfoViewModel viewmodel = new MemberInfoViewModel();
+            viewmodel.BirthDay = Convert.ToDateTime(member.Birthday).ToString("yyyy-MM-dd");
+            viewmodel.Discription = member.Description;
+            viewmodel.HeadPic = member.HeadPic;
+            viewmodel.Likes = member.Likes;
+            viewmodel.Name = member.Name;
+            viewmodel.Sex = member.Sex;
+            viewmodel.Tag = member.Tags;
             return View();
         }
 

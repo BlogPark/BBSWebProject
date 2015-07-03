@@ -57,6 +57,15 @@ namespace BBS.BLL
         {
             return dal.GetMemberInfo(name,email);
         }
+         /// <summary>
+        /// 修改用户的头像信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int UpdateMemberHeadPic(MemberInfo model)
+        {
+            return dal.UpdateMemberHeadPic(model);
+        }
           #endregion
     }
 }

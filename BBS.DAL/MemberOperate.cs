@@ -194,7 +194,27 @@ WHERE   mid = @id";
             }
             return info;
         }
-
+        /// <summary>
+        /// 修改用户的头像信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int UpdateMemberHeadPic(MemberInfo model)
+        {
+            string sqltxt = @"UPDATE  qds157425440_db.dbo.MemberInfo
+SET     HeadPic = @HeadPic ,
+        MidHeadPic = @MidHeadPic ,
+        SmallHeadPic = @SmallHeadPic
+WHERE   MID = @id";
+            SqlParameter[] paramter = { 
+                                          new SqlParameter("@HeadPic",model.HeadPic),
+                                          new SqlParameter("@MidHeadPic",model.MidHeadPic),
+                                          new SqlParameter("@SmallHeadPic",model.SmallHeadPic),
+                                          new SqlParameter("@id",model.MID)
+                                      };
+            int rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
+        }
        
         #endregion
     }

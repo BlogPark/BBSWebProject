@@ -99,7 +99,30 @@ namespace BBS.Web2.Areas.Member.Controllers
             viewmodel.Tag = member.Tags;
             return View();
         }
+        /// <summary>
+        /// 修改用户头像
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UpdateMemberPic()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult PreviewImage()
+        {
+            var bytes = new byte[0];
+            ViewBag.Mime = "image/png";
 
+            if (Request.Files.Count == 1)
+            {
+                bytes = new byte[Request.Files[0].ContentLength];
+                Request.Files[0].InputStream.Read(bytes, 0, bytes.Length);
+                ViewBag.Mime = Request.Files[0].ContentType;
+            }
+
+            ViewBag.Message = Convert.ToBase64String(bytes, Base64FormattingOptions.InsertLineBreaks);
+            return PartialView();
+        }
         protected override void OnException(ExceptionContext filterContext)
         {
             RedirectToAction("Error", "Home", new { area = "" });

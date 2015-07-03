@@ -129,10 +129,12 @@
     <Compile Include="Areas\Discuss\Models\DiscussDetailViewModel.cs" />
     <Compile Include="Areas\Discuss\Models\PartialViewModel.cs" />
     <Compile Include="Areas\Member\Controllers\MemberCenterController.cs" />
+    <Compile Include="Areas\Member\Controllers\ucenterController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="Areas\Member\Models\LeftsidePartModel.cs" />
     <Compile Include="Areas\Member\Models\MemberInfoViewModel.cs" />
     <Compile Include="Areas\Member\Models\MembermsgViewModel.cs" />
+    <Compile Include="Areas\Member\Models\UploadImageModel.cs" />
     <Compile Include="Areas\News\Controllers\NewsPartController.cs" />
     <Compile Include="Areas\News\Models\CatePageViewModel.cs" />
     <Compile Include="Areas\News\Models\NewsDetailViewModel.cs" />
@@ -163,6 +165,17 @@
     <Content Include="css\prettyPhoto.css" />
     <Content Include="css\style-ie.css" />
     <Content Include="Global.asax" />
+    <Content Include="headimg\180\201303040036319181.jpg" />
+    <Content Include="headimg\25\201303040036319181.jpg" />
+    <Content Include="headimg\50\201303040036319181.jpg" />
+    <Content Include="headimg\75\201303040036319181.jpg" />
+    <Content Include="imgCss\imgareaselect-animated.css" />
+    <Content Include="imgCss\popup.css" />
+    <Content Include="imgCss\User.css" />
+    <Content Include="imgscript\head.js" />
+    <Content Include="imgscript\jquery.form.js" />
+    <Content Include="imgscript\jquery.imgareaselect.pack.js" />
+    <Content Include="imgscript\popup.js" />
     <Content Include="img\apple-touch-icon-114x114.png" />
     <Content Include="img\apple-touch-icon-72x72.png" />
     <Content Include="img\apple-touch-icon.png" />
@@ -215,6 +228,18 @@
     <Content Include="img\rnd-client-mask.png" />
     <Content Include="img\slider-caption-bg.png" />
     <Content Include="img\social-icons.png" />
+    <Content Include="img\uploadimg\border-anim-h.gif" />
+    <Content Include="img\uploadimg\border-anim-v.gif" />
+    <Content Include="img\uploadimg\border-h.gif" />
+    <Content Include="img\uploadimg\border-v.gif" />
+    <Content Include="img\uploadimg\line.png" />
+    <Content Include="img\uploadimg\load.gif" />
+    <Content Include="img\uploadimg\tip\g_bg_c.png" />
+    <Content Include="img\uploadimg\tip\g_bg_center.png" />
+    <Content Include="img\uploadimg\tip\g_icon.png" />
+    <Content Include="img\uploadimg\tip\g_l.png" />
+    <Content Include="img\uploadimg\tip\g_r.png" />
+    <Content Include="img\uploadimg\upload.png" />
     <Content Include="img\user-avatar.jpg" />
     <Content Include="img\user-avatar1.jpg" />
     <Content Include="js\bootstrap.js" />
@@ -465,6 +490,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="headimg\temp\" />
     <Folder Include="ueditor\net\upload\" />
   </ItemGroup>
   <ItemGroup>
@@ -535,6 +561,7 @@
     <Content Include="Areas\Member\Views\Shared\_memleftpartial.cshtml" />
     <Content Include="Areas\Member\Views\MemberCenter\PublishDiscuss.cshtml" />
     <Content Include="Areas\Member\Views\MemberCenter\EditMemberInfo.cshtml" />
+    <Content Include="Areas\Member\Views\MemberCenter\UpdateMemberPic.cshtml" />
     <None Include="Properties\PublishProfiles\newweb2.pubxml" />
     <None Include="Properties\PublishProfiles\web2.pubxml" />
     <Content Include="Views\Home\About.cshtml" />

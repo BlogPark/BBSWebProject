@@ -105,5 +105,13 @@ namespace BBS.Model
 
         public int BlogCount { get; set; }
 
+        /// <summary>
+        /// 中等头像
+        /// </summary>
+        public string MidHeadPic { get; set; }
+        /// <summary>
+        /// 最小头像
+        /// </summary>
+        public string SmallHeadPic { get; set; }
     }
 }

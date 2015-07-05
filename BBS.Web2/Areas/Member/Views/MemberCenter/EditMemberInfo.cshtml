@@ -6,13 +6,13 @@
     <!--Container row-->
     <!-- Page Sidebar
     ================================================== -->
-    <div class="span3 sidebar page-left-sidebar">
+    <div class="span4 sidebar page-left-sidebar">
         @Html.Action("Leftside", "MemberCenter", new { area = "Member" })
     </div>
     <!-- End sidebar column -->
     <!-- Page Content
     ================================================== -->
-    <div class="span9">
+    <div class="span8">
         <h4 class="title-bg">个人信息更新</h4>
         <br />
         @using (Html.BeginForm("", "", FormMethod.Post, new { @id="memform"}))

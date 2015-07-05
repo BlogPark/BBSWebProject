@@ -562,6 +562,7 @@
     <Content Include="Areas\Member\Views\MemberCenter\PublishDiscuss.cshtml" />
     <Content Include="Areas\Member\Views\MemberCenter\EditMemberInfo.cshtml" />
     <Content Include="Areas\Member\Views\MemberCenter\UpdateMemberPic.cshtml" />
+    <None Include="Properties\PublishProfiles\bbs.web2.pubxml" />
     <None Include="Properties\PublishProfiles\newweb2.pubxml" />
     <None Include="Properties\PublishProfiles\web2.pubxml" />
     <Content Include="Views\Home\About.cshtml" />

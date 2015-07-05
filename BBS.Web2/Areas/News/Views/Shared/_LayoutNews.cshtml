@@ -62,10 +62,10 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" href="@Url.Action("Index", "NewsPart", new { area="News"})">news<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("Index", "NewsPart", new { area="News"})">ALL News</a></li>
-                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News",id=1 })">Internet News</a></li>
-                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 2 })">Develop News</a></li>
-                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 3 })">Domestic News</a></li>
-                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 4 })">World News</a></li>
+                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 1 }).Replace("_1.html", ".html")">Internet News</a></li>
+                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 2 }).Replace("_1.html", ".html")">Develop News</a></li>
+                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 3 }).Replace("_1.html", ".html")">Domestic News</a></li>
+                                <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 4 }).Replace("_1.html", ".html")">World News</a></li>
                             </ul>
                         </li>
                         <li><a href="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</a></li>
@@ -84,10 +84,10 @@
                             <option value="">Navigate...</option>
                             <option value="@Url.Action("Index", "Home", new { area=""})">Home</option>
                             <option value="@Url.Action("Index", "NewsPart", new { area="News"})">News</option>
-                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News",id=1 })">- Internet News</option>
-                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 2 })">- Develop News</option>
-                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 3 })">- Domestic News</option>
-                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", id = 4 })">- World News</option>
+                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 1 }).Replace("_1.html", ".html")">- Internet News</option>
+                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 2 }).Replace("_1.html", ".html")">- Develop News</option>
+                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 3 }).Replace("_1.html", ".html")">- Domestic News</option>
+                            <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 4 }).Replace("_1.html", ".html")">- World News</option>
                             <option value="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</option>
                             <option value="@Url.Action("Index", "DiscussPart", new { area = "Discuss" })">Discuss</option>
                             <option value="@Url.Action("About", "Home", new { area = "" })">ABOUT</option>

@@ -5,6 +5,7 @@
     <title>@ViewBag.Title</title>
     <meta name="keywords" content="@ViewBag.KeyWord">
     <meta name="description" content="@ViewBag.Description">
+    <meta name="baidu_union_verify" content="4e2a143d7b14406a27bee017d0b41d38">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS-->
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -93,10 +94,10 @@
                                 <li><a href="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 4 }).Replace("_1.html", ".html")">World News</a></li>
                             </ul>
                         </li>
-                        <li><a href="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</a></li>
+                        @*<li><a href="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</a></li>*@
                         <li><a href="@Url.Action("Index", "DiscussPart", new { area = "Discuss" })">Discuss</a></li>
                         <li><a href="@Url.Action("About", "Home", new { area = "" })">ABOUT</a></li>
-                        <li><a href="#">Leave a message</a></li>
+                        @*<li><a href="#">Leave a message</a></li>*@
                     </ul>
                 </div>
                 <!-- Mobile Nav======= -->
@@ -110,10 +111,10 @@
                             <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 2 }).Replace("_1.html", ".html")">- Develop News</option>
                             <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 3 }).Replace("_1.html", ".html")">- Domestic News</option>
                             <option value="@Url.Action("GetListByCateid", "NewsPart", new { area = "News", cid = 4 }).Replace("_1.html", ".html")">- World News</option>
-                            <option value="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</option>
+                            @*<option value="@Url.Action("Index", "Blogs", new { area="BlogPark"})">Blog Park</option>*@
                             <option value="@Url.Action("Index", "DiscussPart", new { area = "Discuss" })">Discuss</option>
                             <option value="@Url.Action("About", "Home", new { area = "" })">ABOUT</option>
-                            <option value="#">Leave a message</option>
+                            @*<option value="#">Leave a message</option>*@
                         </select>
                     </div>
                 </form>
@@ -182,7 +183,10 @@
                 <!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
-                        <div class="span12"  style="text-align:center"><span>&copy; 网站备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank" title="京ICP备15023538号">京ICP备15023538号</a> - 保留所有权利 </span></div>
+                        <div class="span12" style="text-align:center">
+                            <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1255859365'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1255859365%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script><span>&copy; 网站备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank" title="京ICP备15023538号">京ICP备15023538号</a> - 保留所有权利 </span>
+                            
+                        </div>
                     </div>
                 </div>
             </div><!-- End Sub Footer -->

@@ -17,13 +17,13 @@
 </ul>
 <h5 class="title-bg">菜单</h5>
 <ul class="post-category-list">
-    @{
+    @*@{
         if (Model.member.IsBlogUser > 0)
         { <li><a href="#"><i class="icon-plus-sign"></i>发表博文</a></li>}
         else
         {<li><a href="#"><i class="icon-plus-sign"></i>开通博客</a></li> }
-    }
+    }*@
     <li><a href="@Url.Action("PublishDiscuss", "MemberCenter", new { area="Member"})"><i class="icon-plus-sign"></i>提出话题</a></li>
-    <li><a href="@Url.Action("EditMemberInfo", "MemberCenter", new { area="Member"})"><i class="icon-refresh"></i>更新资料</a></li>
+    @*<li><a href="@Url.Action("EditMemberInfo", "MemberCenter", new { area="Member"})"><i class="icon-refresh"></i>更新资料</a></li>*@
      <li><a href="@Url.Action("UpdateMemberPic", "MemberCenter", new { area="Member"})"><i class="icon-refresh"></i>更新头像</a></li>
 </ul>

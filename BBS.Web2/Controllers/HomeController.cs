@@ -25,7 +25,7 @@ namespace BBS.Web2.Controllers
             ViewBag.KeyWord = seoinfo.KeyWord;
             ViewBag.Description = seoinfo.PDescription;
             HomePageViewModel model = new HomePageViewModel();
-            model.News = nbll.GetFristPageArticles().Take(12).ToList<ArticleInfo>();
+            model.News = nbll.GetFristPageArticles().Take(48).ToList<ArticleInfo>();
             model.MemberStar = mbll.GetRecommendMember();
             model.DiscussInfo = "";
             return View(model);

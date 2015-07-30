@@ -436,5 +436,126 @@ FROM    #t A
             return result;
         }
         #endregion
+
+        #region For Admin
+        /// <summary>
+        /// 插入文章信息
+        /// </summary>
+        /// <param name="art"></param>
+        /// <returns></returns>
+        public int InsertArticleInfo(ArticleInfo art)
+        {
+            int rowcount = 0;
+            string sqltxt = @"INSERT  INTO qds157425440_db.dbo.ArticleInfo
+        ( TitleName ,
+          ViceTitleName ,
+          AuthorID ,
+          AuthorName ,
+          PublishTime ,
+          Astatus ,
+          MainPicURL ,
+          PicWidth ,
+          PicHeight ,
+          Addtime ,
+          Updatetime ,
+          CategoryID ,
+          CategoryName ,
+          Tags ,
+          Summary ,
+          DSummary ,
+          ClickCount ,
+          IsTop ,
+          SourceUrl ,
+          AFrom ,
+          CommentCount
+        )
+VALUES  ( @TitleName ,
+          @ViceTitleName ,
+          @AuthorID ,
+          @AuthorName ,
+          GETDATE() ,
+          30 ,
+          @MainPicURL ,
+          @PicWidth ,
+          @PicHeight ,
+          GETDATE() ,
+          GETDATE() ,
+          @CategoryID ,
+          @CategoryName ,
+          @Tags ,
+          @Summary ,
+          @DSummary ,
+          0 ,
+          0 ,
+          @SourceUrl ,
+          @AFrom ,
+          0
+        );SELECT @@IDENTITY";
+            SqlParameter[] paramter = { 
+                                          new SqlParameter("@TitleName",art.TitleName),
+                                          new SqlParameter("@ViceTitleName",art.ViceTitleName),
+                                          new SqlParameter("@AuthorID",art.AuthorID),
+                                          new SqlParameter("@AuthorName",art.AuthorName),
+                                          new SqlParameter("@MainPicURL",art.MainPicURL),
+                                          new SqlParameter("@PicWidth",art.PicWidth),
+                                          new SqlParameter("@PicHeight",art.PicHeight),
+                                          new SqlParameter("@CategoryID",art.CategoryID),
+                                          new SqlParameter("@CategoryName",art.CategoryName),
+                                          new SqlParameter("@Tags",art.Tags),
+                                          new SqlParameter("@Summary",art.Summary),
+                                          new SqlParameter("@DSummary",art.DSummary),
+                                          new SqlParameter("@SourceUrl",art.SourceUrl),
+                                          new SqlParameter("@AFrom",art.AFrom)
+                                      };
+            object k = helper.GetSingle(sqltxt, paramter);
+            if (k!=null)
+            {
+                int aid = int.Parse(k.ToString());
+                if (aid > 0)
+                { 
+                    art.Details.AID = aid;
+                    rowcount = InsertArticleDetail(art.Details);
+                }
+            }
+            return rowcount;
+        }
+        /// <summary>
+        /// 插入文章明细
+        /// </summary>
+        /// <param name="artdetail"></param>
+        /// <returns></returns>
+        public int InsertArticleDetail(ArticleDetail artdetail)
+        {
+            int rowcount = 0;
+            string sqltxt = @"INSERT  INTO qds157425440_db.dbo.ArticleDetail
+        ( AID ,
+          CategoryID ,
+          CategoryName ,
+          AContent ,
+          Summary ,
+          Authorname ,
+          ADetailtext
+        )
+VALUES  ( @AID ,
+          @CategoryID ,
+          @CategoryName ,
+          @AContent ,
+          @Summary ,
+          @Authorname ,
+          @ADetailtext
+        )";
+            SqlParameter[] paramter = { 
+                                      new SqlParameter("@AID",artdetail.AID),
+                                      new SqlParameter("@CategoryID",artdetail.CategoryID),
+                                      new SqlParameter("@CategoryName",artdetail.CategoryName),
+                                      new SqlParameter("@AContent",artdetail.AContent),
+                                      new SqlParameter("@Summary",artdetail.Summary),
+                                      new SqlParameter("@Authorname",artdetail.Authorname),
+                                      new SqlParameter("@ADetailtext",artdetail.ADetailtext)
+                                      };
+            rowcount = helper.ExecuteSql(sqltxt, paramter);
+            return rowcount;
+        }
+        #endregion
     }
 }

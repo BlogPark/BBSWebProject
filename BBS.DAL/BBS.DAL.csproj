@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper">
-      <HintPath>..\..\BBSProject\packages\Dapper.1.38\lib\net40\Dapper.dll</HintPath>
+      <HintPath>..\BBS.Web2\lib\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "添加文章";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>文章管理 <small>发表文章</small></h1>
+            <ol class="breadcrumb">
+                <li><a href="@Url.Action("Index", "bbsArticle", new { area = "Article" })"><i class="fa fa-dashboard"></i>文章管理</a></li>
+                <li class="active"><i class="fa fa-table"></i>添加文章</li>
+            </ol>
+            <div class="pull-right">
+                <!--按钮区-->
+                @*<a class="btn btn-large btn-primary" href="#">反审文章</a>*@
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章标题</h4>
+        </div>
+        <div class="col-lg-6">
+           <input class="form-control" placeholder="标题限制30字以内" id="Title" name="Title">
+        </div>
+        <div class="col-lg-4">
+          <p class="errormsgtext" id="errorforTitle">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章标题 -->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章作者</h4>
+        </div>
+        <div class="col-lg-6">
+           <input class="form-control" placeholder="" id="AuthorName" name="AuthorName">
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforAuthorName">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章作者-->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">来源URL</h4>
+        </div>
+        <div class="col-lg-6">
+           <input class="form-control" placeholder=""  id="SourceUrl" name="SourceUrl">
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforSourceUrl">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /来源URL -->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章来源</h4>
+        </div>
+        <div class="col-lg-6">
+           <input class="form-control" placeholder=""  id="AFrom" name="AFrom">
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforAFrom">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章来源 -->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章分类</h4>
+        </div>
+        <div class="col-lg-6">
+           <select class="form-control"  id="CategoryName" name="CategoryName">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforCategoryName">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章分类 -->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章图片</h4>
+        </div>
+        <div class="col-lg-6">
+           <input class="form-control" placeholder=""  id="MainPicURL" name="MainPicURL">
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforMainPicURL">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章图片-->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章摘要</h4>
+        </div>
+        <div class="col-lg-6">
+           <textarea class="form-control" rows="5"  id="Summary" name="Summary"></textarea>
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforSummary">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章摘要 -->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">文章内容</h4>
+        </div>
+        <div class="col-lg-6">
+           @*<input class="form-control" placeholder=""  id="AContent" name="AContent">*@
+            <script type="text/plain" id="editor">sss</script>
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforAContent">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /文章内容 -->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright">关键词组</h4>
+        </div>
+        <div class="col-lg-6">
+           <input class="form-control" placeholder=""  id="Tags" name="Tags">
+        </div>
+        <div class="col-lg-4">
+           <p class="errormsgtext"  id="errorforTags">Example block-level help text here.</p>
+        </div>
+    </div>
+    <!-- /关键词组-->
+     <div class="row bootrow">
+        <div class="col-lg-2">
+                <h4 class="floatright"></h4>
+        </div>
+        <div class="col-lg-6" style="text-align:center">
+           <button class="btn btn-primary btn-lg" type="button">保  存</button>
+            <button class="btn btn-primary btn-lg bootbtnml40" type="button">取  消</button>
+        </div>
+        <div class="col-lg-4">
+             <p class="errormsgtext"></p>
+        </div>
+    </div>
+    <!-- /按钮组 -->
+</div>
+<!-- /#page-wrapper -->
+
+@section bodyjs{
+    <script src="~/ueditor/ueditor.config.js"></script>
+        <script src="~/ueditor/ueditor.all.min.js"></script>
+    <script src="~/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var ue = UE.getEditor('editor', UE.utils.extend({
+                toolbars: [['source', '|', 'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', '|', 'fontsize', '|', 'directionalityltr', 'directionalityrtl', 'indent', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'insertimage']]
+        , zIndex: 1000, initialFrameHeight: 500, initialFrameWidth: 528, catchRemoteImageEnable: false
+            }, null, true));
+        });
+    </script>
+    }

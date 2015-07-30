@@ -89,5 +89,17 @@ namespace BBS.BLL
            return adal.GetNewsbyCateforPage(cateid,pageindex);
        }
         #endregion
+
+        #region For Admin
+       /// <summary>
+        /// 插入文章信息
+        /// </summary>
+        /// <param name="art"></param>
+        /// <returns></returns>
+       public int InsertArticleInfo(ArticleInfo art)
+       {
+           return adal.InsertArticleInfo(art);
+       }
+        #endregion
     }
 }

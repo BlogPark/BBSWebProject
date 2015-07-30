@@ -250,6 +250,7 @@
     <Content Include="js\jquery.quicksand.js" />
     <Content Include="js\jquery.validate.min.js" />
     <Content Include="js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="lib\Dapper.dll" />
     <Content Include="lib\System.Web.Mvc.dll" />
     <Content Include="lib\System.Web.Optimization.dll" />
     <Content Include="ueditor\dialogs\anchor\anchor.html" />

@@ -113,7 +113,7 @@
         </div>
         <div class="col-lg-6">
            @*<input class="form-control" placeholder=""  id="AContent" name="AContent">*@
-            <script type="text/plain" id="editor">sss</script>
+            <script type="text/plain" id="editor"></script>
         </div>
         <div class="col-lg-4">
            <p class="errormsgtext"  id="errorforAContent">Example block-level help text here.</p>
@@ -149,14 +149,14 @@
 <!-- /#page-wrapper -->
 
 @section bodyjs{
-    <script src="~/ueditor/ueditor.config.js"></script>
-        <script src="~/ueditor/ueditor.all.min.js"></script>
-    <script src="~/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="@Url.Content("/ueditor/ueditor.config.js")"></script>
+    <script src="@Url.Content("/ueditor/ueditor.all.min.js")"></script>
+    <script src="@Url.Content("/ueditor/lang/zh-cn/zh-cn.js")"></script>
     <script type="text/javascript">
         $(function () {
             var ue = UE.getEditor('editor', UE.utils.extend({
                 toolbars: [['source', '|', 'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', '|', 'fontsize', '|', 'directionalityltr', 'directionalityrtl', 'indent', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'insertimage']]
-        , zIndex: 1000, initialFrameHeight: 500, initialFrameWidth: 528, catchRemoteImageEnable: false
+        , zIndex: 1000, initialFrameHeight: 500, initialFrameWidth: '100%', catchRemoteImageEnable: false
             }, null, true));
         });
     </script>

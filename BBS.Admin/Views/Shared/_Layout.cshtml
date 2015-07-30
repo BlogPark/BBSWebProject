@@ -6,12 +6,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>@ViewBag.Title</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/sb-admin.css" rel="stylesheet" />
-    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Content/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("/Content/sb-admin.css")" rel="stylesheet" />
+    ><link href="@Url.Content("/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    ><link href="@Url.Content("/Content/morris-0.4.3.min.css")" rel="stylesheet" />
     @RenderSection("headcss", false)
-</head>
+></head>
 <body>
     <div id="wrapper">
 
@@ -114,13 +114,13 @@
         <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" title="网站模板">网站模板</a></div>
         @RenderBody()
     </div>
-    <script src="~/js/jquery-1.10.2.js"></script>
-    <script src="~/js/bootstrap.js"></script>
-    <script src="~/js/raphael-min.js"></script>
-    <script src="~/js/morris-0.4.3.min.js"></script>
-    <script src="~/js/morris/chart-data-morris.js"></script>
-    <script src="~/js/tablesorter/tables.js"></script>
-    <script src="~/js/tablesorter/jquery.tablesorter.js"></script>
+    <script src="@Url.Content("/js/jquery-1.10.2.js")"></script>
+    <script src="@Url.Content("/js/bootstrap.js" )"></script>
+    <script src="@Url.Content("/js/raphael-min.js" )"></script>
+    <script src="@Url.Content("/js/morris-0.4.3.min.js" )"></script>
+    <script src="@Url.Content("/js/morris/chart-data-morris.js" )"></script>
+    <script src="@Url.Content("/js/tablesorter/tables.js" )"></script>
+    <script src="@Url.Content("/js/tablesorter/jquery.tablesorter.js" )"></script>
     @RenderSection("bodyjs", false)
 </body>
 </html>

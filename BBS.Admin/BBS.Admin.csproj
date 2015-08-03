@@ -263,6 +263,7 @@
     <Content Include="Areas\Article\Views\bbsArticle\Add.cshtml" />
     <Content Include="Areas\Article\Views\bbsArticle\Update.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="images\default.jpg" />
     <Content Include="js\bootstrap-datetimepicker.min.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\flot\chart-data-flot.js" />

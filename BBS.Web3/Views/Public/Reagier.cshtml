@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--页面主题开始-->
+<div class="container leftcontain">
+    <form id="form1" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="inputEmail3">邮箱</label>
+            <div class="col-sm-4">
+                <input type="email" placeholder="Email" id="inputEmail3" class="form-control">
+            </div>
+            <lable class="left col-sm-2 control-label errortext" for="inputEmail3">* 请输入正确邮箱信息</lable>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="inputname">用户名</label>
+            <div class="col-sm-4">
+                <input type="email" placeholder="昵称" id="inputname" class="form-control">
+            </div>
+            <lable class="left col-sm-2 control-label errortext" for="inputEmail3">* 请输入用户名</lable>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="inputpwd">密码</label>
+            <div class="col-sm-4">
+                <input type="email" placeholder="密码" id="inputpwd" class="form-control">
+            </div>
+            <lable class="left col-sm-2 control-label errortext" for="inputEmail3">* 请输入登陆密码</lable>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="inputpwd2">确认密码</label>
+            <div class="col-sm-4">
+                <input type="email" placeholder="确认密码" id="inputpwd2" class="form-control">
+            </div>
+            <lable class="left col-sm-2 control-label errortext" for="inputEmail3">* 请再次确认登陆密码</lable>
+        </div>
+        <div class="form-group divmipan col-lg-11">
+            <button class="btn  btn-primary btn-lg ">注 册</button>
+            <a href="#" data-toggle="modal" data-target="#mymodal">已有账号？立即登陆</a>
+        </div>
+    </form>
+</div>
+<!--页面主体结束-->

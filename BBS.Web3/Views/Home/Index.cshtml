@@ -1,0 +1,718 @@
+﻿@{
+    ViewBag.Title = "首页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--页面主题开始-->
+<div class="container leftcontain">
+    <!--左侧信息-->
+    <div class="col-lg-8 incontent">
+        <!--轮播图开始-->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner lbtin" role="listbox">
+                <div class="item active">
+                    <img src="images/aa.png" alt="图片">
+
+                    <div class="carousel-caption">
+                        这是图片一
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="images/aa.png" alt="图片">
+
+                    <div class="carousel-caption">
+                        这是图片二
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="images/aa.png" alt="图片">
+
+                    <div class="carousel-caption">
+                        这是图片三
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <script type="text/javascript">
+            $('.carousel').carousel({
+                interval: 5000
+            })
+        </script>
+        <!--轮播图结束-->
+        <div class="commentlist">
+            <h3 class="title"><strong>观众：一周要闻</strong></h3>
+            <ul>
+                <li>
+                    <span>1</span>
+                    <a href="#" target="_blank" class="commenttitle">Google Chrome稳定版更新至v44.0.2403.107</a>
+
+                    <div class="titlesub">评论（<em>20</em>） 阅读 （<em>80</em>）</div>
+                </li>
+                <li>
+                    <span>2</span>
+                    <a href="#" target="_blank" class="commenttitle">Google Chrome稳定版更新至v44.0.2403.107</a>
+
+                    <div class="titlesub">评论（<em>20</em>） 阅读 （<em>80</em>）</div>
+                </li>
+                <li>
+                    <span>3</span>
+                    <a href="#" target="_blank" class="commenttitle">Google Chrome稳定版更新至v44.0.2403.107</a>
+
+                    <div class="titlesub">评论（<em>20</em>） 阅读 （<em>80</em>）</div>
+                </li>
+                <li>
+                    <span>4</span>
+                    <a href="#" target="_blank" class="commenttitle">Google Chrome稳定版更新至v44.0.2403.107</a>
+
+                    <div class="titlesub">评论（<em>20</em>） 阅读 （<em>80</em>）</div>
+                </li>
+                <li>
+                    <span>5</span>
+                    <a href="#" target="_blank" class="commenttitle">Google Chrome稳定版更新至v44.0.2403.107</a>
+
+                    <div class="titlesub">评论（<em>20</em>） 阅读 （<em>80</em>）</div>
+                </li>
+            </ul>
+        </div>
+        <div class="contenttopadv">
+            <img src="images/hengtiao.jpg" alt="横向广告" />
+        </div>
+        <div class="articlelist">
+            <h3 class="title"><strong>新闻：最新发布</strong></h3>
+            <article class="articles">
+                <head>
+                    <a href="ContentDetail.html"><h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2></a>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <a href="ContentDetail.html"><h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2></a>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+            <article class="articles">
+                <head>
+                    <h2>需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</h2>
+                </head>
+                <p class="publishtime">山外的鸭子哥 发布于 6小时前</p>
+
+                <p class="artsmimg">
+                    <a class="thumbnail" href="http://www.landiannews.com/archives/18686.html" target="_blank">
+                        <img class="thumb"
+                             data-original="/images/IC580765.jpg"
+                             src="/images/IC580765.jpg"
+                             style="display: inline;">
+                    </a>
+                </p>
+
+                <p class="dsummary">
+                    由于Windows ADK都是版本之间必须对应的，所以不少同学升级Windows 10后找不到Windows 10 版的ADK而无法使用VAMT。
+                    不过现在微软已经发了Windows ADK for
+                    Windows 10，
+                    所以可以下载安装部署一下了。 已经安装SQL的不需要再安装...
+                </p>
+
+                <p class="comments">
+                    <span style="margin-right: 20px">评论(<em>20</em>)</span>
+                    <a data-event="like" data-pid="18686" class="post-like" href="javascript:;">
+                        <i class="glyphicon glyphicon-thumbs-up"></i>赞 (<span>0</span>)
+                    </a>
+                </p>
+            </article>
+        </div>
+        <div class="pagecon">
+            <nav>
+                <ul class="pagination">
+                    <li class="disabled">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!--右侧信息-->
+    <div class="col-lg-4">
+        <!--登录模块-->
+        <div class="ritempan loginpan">
+            <h3 class="title"><strong>登录</strong></h3>
+
+            <div class="divmipan">
+                <input type="text" placeholder="输入用户名" id="name">
+                <input type="password" placeholder="输入密码" id="pwd">
+                <button type="button" class="btn btn-sm btn-primary">登录</button>
+                <small>还没有账号？去注册吧》</small>
+            </div>
+        </div>
+        <!--广告模块-->
+        <div class="ritempan lefadv">
+            <a href="#" class="thumbnail">
+                <img src="images/aa.png" alt="广告">
+            </a>
+        </div>
+        <!--热门阅读模块 8条-->
+        <div class="ritempan hotread">
+            <h3 class="title"><strong>热门资讯</strong></h3>
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="thumbnail hotreadimg"><img src="images/aa.png" alt="广告"></span>
+                        <span class="text">需要使用批量激活管理工具（VAMT）的请注意：微软已发布Windows 10版的ADK</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--最新评论模块 5条-->
+        <div class="ritempan newcomment">
+            <h3 class="title"><strong>他们都在说</strong></h3>
+            <ul>
+                <li class="ds-comment ds-show-avatars">
+                    <div class="ds-thread-title">阿信&nbsp;在<a href="#">自用代理分享：剩余约160G流量//8月4日密码变更</a> 中评论：</div>
+                    <div class="ds-excerpt">看下。。。</div>
+                </li>
+                <li class="ds-comment ds-show-avatars">
+                    <div class="ds-thread-title">阿信&nbsp;在<a href="#">自用代理分享：剩余约160G流量//8月4日密码变更</a> 中评论：</div>
+                    <div class="ds-excerpt">看下自用代理分享：剩余约160G流量//8月4日密码变更。。。</div>
+                </li>
+                <li class="ds-comment ds-show-avatars">
+                    <div class="ds-thread-title">阿信&nbsp;在<a href="#">自用代理分享：剩余约160G流量//8月4日密码变更</a> 中评论：</div>
+                    <div class="ds-excerpt">看下。。。</div>
+                </li>
+                <li class="ds-comment ds-show-avatars">
+                    <div class="ds-thread-title">阿信&nbsp;在<a href="#">自用代理分享：剩余约160G流量//8月4日密码变更</a> 中评论：</div>
+                    <div class="ds-excerpt">看下。。。</div>
+                </li>
+                <li class="ds-comment ds-show-avatars">
+                    <div class="ds-thread-title">阿信&nbsp;在<a href="#">自用代理分享：剩余约160G流量//8月4日密码变更</a> 中评论：</div>
+                    <div class="ds-excerpt">看下。。。</div>
+                </li>
+            </ul>
+        </div>
+        <!--广告模块-->
+        <div class="ritempan lefadv ">
+            <a href="#" class="thumbnail">
+                <img src="images/aa.png" alt="广告">
+            </a>
+        </div>
+        <!--激烈讨论-->
+        <div class="ritempan">
+            <h3 class="title"><strong>激烈讨论</strong></h3>
+            <div class="list-group discuss">
+                <a href="#" class="list-group-item">
+                    <span class="badge">14</span>
+                    Cras justo odio
+                </a>
+                <a href="#" class="list-group-item"><span class="badge">14</span>随时随地的顶顶随时随地随时随地随时随地人</a>
+                <a href="#" class="list-group-item"><span class="badge">14</span>Morbi leo risus</a>
+                <a href="#" class="list-group-item"><span class="badge">14</span>Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item"><span class="badge">14</span>Vestibulum at eros</a>
+            </div>
+        </div>
+        <!--广告模块-->
+        <div class="ritempan lefadvsm ">
+            <a href="#" class="">
+                <img src="images/aa.png" alt="广告">
+            </a>
+        </div>
+        <!--友链模块-->
+        <div class="ritempan friendlink">
+            <h3 class="title"><strong>友情链接</strong></h3>
+            <ul>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+                <li><a href="#">百度</a> </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--页面主体结束-->
